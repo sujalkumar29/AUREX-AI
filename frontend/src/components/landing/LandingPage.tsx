@@ -84,7 +84,7 @@ export function LandingPage() {
   ];
 
   // Interactive Brand DNA Workspace State
-  const [activeDnaTab, setActiveDnaTab] = useState<"facts" | "lexicon" | "visual">("facts");
+  const [activeDnaTab, setActiveDnaTab] = useState<"facts" | "lexicon">("facts");
 
   // Interactive Intelligence Engine Node State
   const [activeEngineStep, setActiveEngineStep] = useState(2);
@@ -490,7 +490,7 @@ export function LandingPage() {
               <span className="text-[#5B4BFF]">The Sovereign Truth.</span>
             </h2>
             <p className="text-sm text-[#77738F] leading-relaxed font-normal">
-              Eliminate ambiguous guidelines scattered across outdated drives. Brand DNA codifies your mission, official claims, terminology dictionaries, and visual tokens into a queryable, versioned vector truth.
+              Eliminate ambiguous guidelines scattered across outdated drives. Brand DNA codifies your mission, official claims, and terminology dictionaries into a queryable, versioned vector truth.
             </p>
             <div className="space-y-2.5 font-mono text-xs text-[#17143A] pt-2">
               <div className="glass-card flex items-center space-x-2.5 p-3 rounded-[8px] border border-[#E5E1F2]">
@@ -530,12 +530,6 @@ export function LandingPage() {
                     className={`px-3 py-1 rounded-[6px] transition-all ${activeDnaTab === "lexicon" ? "bg-[#5B4BFF] text-white font-bold shadow-sm" : "text-[#77738F] hover:text-[#0D0B2D]"}`}
                   >
                     Vocabulary (18)
-                  </button>
-                  <button
-                    onClick={() => setActiveDnaTab("visual")}
-                    className={`px-3 py-1 rounded-[6px] transition-all ${activeDnaTab === "visual" ? "bg-[#5B4BFF] text-white font-bold shadow-sm" : "text-[#77738F] hover:text-[#0D0B2D]"}`}
-                  >
-                    Visual Tokens
                   </button>
                 </div>
               </div>
@@ -604,39 +598,6 @@ export function LandingPage() {
                     </div>
                   </div>
                 )}
-
-                {activeDnaTab === "visual" && (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
-                    <div className="glass-card p-4 rounded-[10px] border border-[#E5E1F2] space-y-2">
-                      <div className="h-10 rounded-[6px] bg-[#0D0B2D] shadow-sm" />
-                      <div>
-                        <p className="font-bold text-[#0D0B2D]">Primary Purple</p>
-                        <p className="text-[11px] text-[#77738F]">HEX: #0D0B2D</p>
-                      </div>
-                    </div>
-                    <div className="glass-card p-4 rounded-[10px] border border-[#E5E1F2] space-y-2">
-                      <div className="h-10 rounded-[6px] bg-[#5B4BFF] shadow-sm" />
-                      <div>
-                        <p className="font-bold text-[#0D0B2D]">Electric Purple</p>
-                        <p className="text-[11px] text-[#77738F]">HEX: #5B4BFF</p>
-                      </div>
-                    </div>
-                    <div className="glass-card p-4 rounded-[10px] border border-[#E5E1F2] space-y-2">
-                      <div className="h-10 rounded-[6px] bg-[#A78BFA] shadow-sm" />
-                      <div>
-                        <p className="font-bold text-[#0D0B2D]">Soft Violet</p>
-                        <p className="text-[11px] text-[#77738F]">HEX: #A78BFA</p>
-                      </div>
-                    </div>
-                    <div className="glass-card p-4 rounded-[10px] border border-[#E5E1F2] space-y-2">
-                      <div className="h-10 rounded-[6px] bg-[#E6E0FF] border border-[#5B4BFF]/30 shadow-sm" />
-                      <div>
-                        <p className="font-bold text-[#0D0B2D]">Lavender Surface</p>
-                        <p className="text-[11px] text-[#77738F]">HEX: #E6E0FF</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -678,7 +639,7 @@ export function LandingPage() {
             {
               step: "03",
               title: "6-Vector Forensics",
-              desc: "Audits voice & tone, terms, messaging, visual tokens, and WCAG contrast.",
+              desc: "Audits voice & tone, terms, messaging, visual standards, and WCAG contrast.",
               icon: Cpu
             },
             {
