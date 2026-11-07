@@ -8,64 +8,77 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Core Palette requested by User:
+        // Strict Monochromatic Enterprise System:
+        mono: {
+          black: "#000000",
+          deep: "#090909",
+          surface: "#111111",
+          elevated: "#181818",
+          border: "#292929",
+          muted: "#777777",
+          secondary: "#A1A1A1",
+          light: "#D4D4D4",
+          white: "#FFFFFF",
+          offwhite: "#F5F5F5",
+        },
+        // Universal color aliases mapped strictly to monochrome
+        black: "#000000",
+        white: "#FFFFFF",
         midnight: {
-          DEFAULT: "#14231F",
-          50: "#F2F5F4",
-          100: "#E2E8E6",
-          200: "#C4D0CC",
-          300: "#8FA49D",
-          400: "#4D6B62",
-          500: "#2B433C",
-          600: "#1E322C",
-          700: "#182924",
-          800: "#14231F", // Midnight Green (Signature)
-          900: "#0D1815",
-          950: "#080F0D",
+          DEFAULT: "#000000",
+          50: "#F5F5F5",
+          100: "#E5E5E5",
+          200: "#D4D4D4",
+          300: "#A1A1A1",
+          400: "#777777",
+          500: "#555555",
+          600: "#333333",
+          700: "#292929",
+          800: "#181818",
+          900: "#111111",
+          950: "#090909",
         },
         slate: {
-          deep: "#202C35", // Deep Slate
-          card: "#192229",
-          border: "#2A3843",
+          deep: "#111111",
+          card: "#181818",
+          border: "#292929",
         },
         offwhite: {
-          DEFAULT: "#F3F5F2", // Cool Off-White
+          DEFAULT: "#F5F5F5",
           pure: "#FFFFFF",
-          muted: "#E8ECE6",
-          dark: "#D7DDD5",
+          muted: "#D4D4D4",
+          dark: "#A1A1A1",
         },
         teal: {
-          muted: "#71958C", // Muted Teal
-          light: "#8AAEA5",
-          dark: "#54736C",
-          glow: "rgba(113, 149, 140, 0.25)",
+          muted: "#D4D4D4",
+          light: "#FFFFFF",
+          dark: "#A1A1A1",
+          glow: "rgba(255, 255, 255, 0.12)",
         },
         silver: {
-          DEFAULT: "#DCE2DE", // Soft Silver
-          light: "#EAEFEA",
-          dark: "#B8C1BC",
+          DEFAULT: "#A1A1A1",
+          light: "#D4D4D4",
+          dark: "#777777",
         },
         charcoal: {
-          DEFAULT: "#242B2A", // Charcoal
-          50: "#323B3A",
-          100: "#242B2A",
-          200: "#1C2221",
-          300: "#131716",
+          DEFAULT: "#181818",
+          50: "#292929",
+          100: "#181818",
+          200: "#111111",
+          300: "#090909",
         },
-        // Semantic indicator tokens:
         signal: {
-          emerald: "#2E856E",
-          emeraldLight: "#E6F4F0",
-          crimson: "#B34033",
-          crimsonLight: "#FBEBE9",
-          amber: "#C28629",
-          amberLight: "#FBF3E6",
+          emerald: "#FFFFFF",
+          emeraldLight: "#181818",
+          crimson: "#D4D4D4",
+          crimsonLight: "#111111",
+          amber: "#A1A1A1",
+          amberLight: "#181818",
         },
       },
       fontFamily: {
-        sans: ["Manrope", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
-        serif: ["Instrument Serif", "Georgia", "serif"],
-        mono: ["JetBrains Mono", "SF Mono", "Menlo", "Consolas", "monospace"],
+        sans: ["Inter", "Geist", "Manrope", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        mono: ["Geist Mono", "JetBrains Mono", "SF Mono", "Menlo", "Consolas", "monospace"],
       },
       borderRadius: {
         sm: "2px",
@@ -76,9 +89,9 @@ module.exports = {
         "2xl": "16px",
       },
       boxShadow: {
-        technical: "0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px -1px rgba(0, 0, 0, 0.2)",
-        elevation: "0 8px 32px -4px rgba(12, 20, 18, 0.4)",
-        glowMuted: "0 0 24px -4px rgba(113, 149, 140, 0.18)",
+        technical: "0 1px 3px 0 rgba(0, 0, 0, 0.8), 0 0 0 1px #292929",
+        elevation: "0 10px 40px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px #292929",
+        subtleWhite: "0 0 25px -5px rgba(255, 255, 255, 0.1)",
       },
     },
   },

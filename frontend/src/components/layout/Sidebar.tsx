@@ -44,20 +44,20 @@ export function Sidebar() {
   ];
 
   return (
-    <aside className="w-64 border-r border-silver/10 bg-midnight text-offwhite flex flex-col justify-between p-4 min-h-[calc(100vh-4rem)]">
+    <aside className="w-64 border-r border-[#292929] bg-black text-white flex flex-col justify-between p-4 min-h-[calc(100vh-4rem)] font-sans">
       <div className="space-y-6">
         {/* New Submission Action CTA */}
         <Link
           href="/dashboard/submissions/new"
-          className="flex items-center justify-center space-x-2 w-full py-2.5 px-4 rounded-[4px] bg-offwhite text-midnight hover:bg-silver font-bold text-xs uppercase tracking-wider transition-colors shadow-technical group"
+          className="flex items-center justify-center space-x-2 w-full py-2.5 px-4 rounded-[4px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider transition-colors shadow-technical font-mono group"
         >
-          <PlusCircle className="w-4 h-4 text-midnight transition-transform group-hover:rotate-90" />
+          <PlusCircle className="w-4 h-4 text-black transition-transform group-hover:rotate-90" />
           <span>New Analysis</span>
         </Link>
 
         {/* Navigation Links */}
         <nav className="space-y-1">
-          <div className="px-3 py-1 text-[10px] uppercase font-mono tracking-wider text-silver/50">
+          <div className="px-3 py-1.5 text-[10px] uppercase font-mono tracking-wider text-[#777777]">
             Platform Modules
           </div>
           {navItems.map((item) => {
@@ -69,16 +69,16 @@ export function Sidebar() {
                 href={item.href}
                 className={`flex items-center justify-between px-3 py-2 rounded-[4px] text-xs font-medium transition-all ${
                   isActive
-                    ? "bg-slate-deep text-offwhite border border-teal-muted/40 font-semibold"
-                    : "text-silver/70 hover:text-offwhite hover:bg-charcoal/60"
+                    ? "bg-[#181818] text-white border border-white/60 font-semibold"
+                    : "text-[#A1A1A1] hover:text-white hover:bg-[#111111]"
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <Icon className={`w-4 h-4 ${isActive ? "text-teal-muted" : "text-silver/50"}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? "text-white" : "text-[#777777]"}`} />
                   <span>{item.label}</span>
                 </div>
                 {item.badge && (
-                  <span className="text-[9px] uppercase tracking-wider font-mono px-1.5 py-0.2 rounded bg-teal-muted/15 text-teal-muted border border-teal-muted/30">
+                  <span className="text-[9px] uppercase tracking-wider font-mono px-1.5 py-0.5 rounded bg-[#111111] text-[#D4D4D4] border border-[#292929]">
                     {item.badge}
                   </span>
                 )}
@@ -89,19 +89,16 @@ export function Sidebar() {
       </div>
 
       {/* Human-in-the-Loop Philosophy Box */}
-      <div className="rounded-[4px] p-3.5 bg-slate-deep border border-silver/15">
-        <div className="flex items-center space-x-2 text-teal-muted mb-1.5">
-          <ShieldCheck className="w-4 h-4 text-signal-emerald" />
+      <div className="rounded-[4px] p-4 bg-[#090909] border border-[#292929]">
+        <div className="flex items-center space-x-2 text-white mb-2">
+          <ShieldCheck className="w-4 h-4 text-white" />
           <span className="text-[10px] font-bold tracking-wider uppercase font-mono">
-            Aurex Integrity Creed
+            Aurex Creed
           </span>
         </div>
-        <p className="text-[11px] text-silver leading-relaxed font-sans">
-          &quot;AI recommends. Evidence explains. Humans decide.&quot;
+        <p className="text-[11px] text-[#A1A1A1] leading-relaxed font-sans italic">
+          &ldquo;AI recommends. Evidence explains. Humans decide.&rdquo;
         </p>
-        <div className="mt-2 text-[9px] font-mono text-silver/50 uppercase tracking-widest">
-          ACTIVE ROLE: {role}
-        </div>
       </div>
     </aside>
   );

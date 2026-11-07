@@ -121,43 +121,43 @@ export default function NewSubmissionPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 font-sans">
+    <div className="max-w-4xl mx-auto space-y-6 font-sans text-[#F5F5F5]">
       {/* Header */}
       <div className="space-y-1">
-        <div className="inline-flex items-center space-x-2 text-[10px] font-mono uppercase tracking-[0.16em] text-teal-muted">
-          <Activity className="w-3.5 h-3.5 text-signal-emerald animate-pulse" />
+        <div className="inline-flex items-center space-x-2 text-[10px] font-mono uppercase tracking-[0.16em] text-[#A1A1A1]">
+          <Activity className="w-3.5 h-3.5 text-white animate-pulse" />
           <span>CONTENT VERIFICATION STUDIO</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-offwhite tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
           Submit Content for Brand Analysis
         </h1>
-        <p className="text-xs text-silver/70 font-normal">
+        <p className="text-xs text-[#A1A1A1] font-normal">
           Your content will be cross-referenced across 6 governance dimensions against the brand&apos;s approved DNA knowledge base.
         </p>
       </div>
 
       {error && (
-        <div className="p-3.5 rounded-[4px] bg-signal-crimson/15 border border-signal-crimson/40 text-xs text-signal-crimson flex items-center space-x-2">
-          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+        <div className="p-3.5 rounded-[4px] bg-[#181818] border-2 border-[#D4D4D4] text-xs text-white flex items-center space-x-2 font-mono">
+          <AlertCircle className="w-4 h-4 flex-shrink-0 text-white" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Preset Fill Buttons for Quick Testing */}
-      <div className="p-4 rounded-[4px] bg-slate-deep border border-silver/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-        <span className="text-silver/60 font-mono text-[11px] uppercase tracking-wider">Demo Presets:</span>
-        <div className="flex items-center space-x-2">
+      <div className="p-4 rounded-[4px] bg-[#090909] border border-[#292929] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs shadow-technical">
+        <span className="text-[#777777] font-mono text-[11px] uppercase tracking-wider">Demo Presets:</span>
+        <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => handleSampleFill("compliant")}
-            className="px-3 py-1.5 rounded-[2px] bg-charcoal border border-teal-muted/40 text-teal-muted hover:bg-midnight font-mono text-xs transition-colors"
+            className="px-3 py-1.5 rounded-[2px] bg-[#111111] border border-[#292929] text-white hover:bg-white hover:text-black font-mono text-xs transition-colors"
           >
             Load Compliant Copy (~96 Score)
           </button>
           <button
             type="button"
             onClick={() => handleSampleFill("violations")}
-            className="px-3 py-1.5 rounded-[2px] bg-charcoal border border-signal-crimson/40 text-signal-crimson hover:bg-midnight font-mono text-xs transition-colors"
+            className="px-3 py-1.5 rounded-[2px] bg-[#181818] border border-[#292929] text-[#D4D4D4] hover:bg-white hover:text-black font-mono text-xs transition-colors"
           >
             Load Violation Copy (~58 Score)
           </button>
@@ -165,16 +165,16 @@ export default function NewSubmissionPage() {
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="p-6 md:p-8 rounded-[6px] bg-slate-deep border border-silver/15 space-y-5 shadow-elevation">
+      <form onSubmit={handleSubmit} className="p-6 md:p-8 rounded-[6px] bg-[#090909] border border-[#292929] space-y-5 shadow-technical">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-mono uppercase tracking-wider text-silver/70 mb-1">
+            <label className="block text-xs font-mono uppercase tracking-wider text-[#A1A1A1] mb-1">
               Select Brand DNA
             </label>
             <select
               value={selectedBrandId}
               onChange={(e) => setSelectedBrandId(e.target.value)}
-              className="w-full rounded-[4px] bg-midnight border border-silver/20 px-3.5 py-2.5 text-xs text-offwhite focus:outline-none focus:border-teal-muted"
+              className="w-full rounded-[4px] bg-[#111111] border border-[#292929] px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-white transition-colors"
             >
               {brands.map((b) => (
                 <option key={b.id} value={b.id}>
@@ -185,13 +185,13 @@ export default function NewSubmissionPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-mono uppercase tracking-wider text-silver/70 mb-1">
+            <label className="block text-xs font-mono uppercase tracking-wider text-[#A1A1A1] mb-1">
               Content Format
             </label>
             <select
               value={contentType}
               onChange={(e) => setContentType(e.target.value)}
-              className="w-full rounded-[4px] bg-midnight border border-silver/20 px-3.5 py-2.5 text-xs text-offwhite focus:outline-none focus:border-teal-muted"
+              className="w-full rounded-[4px] bg-[#111111] border border-[#292929] px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-white transition-colors"
             >
               <option value="marketing_copy">Marketing / Web Copy</option>
               <option value="social_post">Social Media Post</option>
@@ -203,7 +203,7 @@ export default function NewSubmissionPage() {
         </div>
 
         <div>
-          <label className="block text-xs font-mono uppercase tracking-wider text-silver/70 mb-1">
+          <label className="block text-xs font-mono uppercase tracking-wider text-[#A1A1A1] mb-1">
             Submission Title
           </label>
           <input
@@ -212,16 +212,16 @@ export default function NewSubmissionPage() {
             placeholder="e.g. Q1 Global Expansion Announcement"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full rounded-[4px] bg-midnight border border-silver/20 px-3.5 py-2.5 text-xs text-offwhite placeholder-silver/40 focus:outline-none focus:border-teal-muted"
+            className="w-full rounded-[4px] bg-[#111111] border border-[#292929] px-3.5 py-2.5 text-xs text-white placeholder-[#777777] focus:outline-none focus:border-white transition-colors"
           />
         </div>
 
         <div>
           <div className="flex items-center justify-between mb-1">
-            <label className="block text-xs font-mono uppercase tracking-wider text-silver/70">
+            <label className="block text-xs font-mono uppercase tracking-wider text-[#A1A1A1]">
               Content Copy to Evaluate
             </label>
-            <span className="text-[11px] font-mono text-silver/50">
+            <span className="text-[11px] font-mono text-[#777777]">
               {rawText.length} characters
             </span>
           </div>
@@ -230,15 +230,15 @@ export default function NewSubmissionPage() {
             placeholder="Paste your marketing copy, social caption, or document draft here..."
             value={rawText}
             onChange={(e) => setRawText(e.target.value)}
-            className="w-full rounded-[4px] bg-midnight border border-silver/20 p-3.5 text-xs text-offwhite placeholder-silver/40 focus:outline-none focus:border-teal-muted font-mono leading-relaxed"
+            className="w-full rounded-[4px] bg-[#111111] border border-[#292929] p-3.5 text-xs text-white placeholder-[#777777] focus:outline-none focus:border-white font-mono leading-relaxed transition-colors"
           />
         </div>
 
         {/* File Drag & Drop / Upload Optional */}
-        <div className="p-4 rounded-[4px] bg-midnight border border-dashed border-silver/20 text-center space-y-2">
-          <Upload className="w-5 h-5 text-teal-muted mx-auto" />
-          <div className="text-xs text-silver">
-            <label className="text-teal-muted hover:underline cursor-pointer font-semibold">
+        <div className="p-4 rounded-[4px] bg-[#111111] border border-dashed border-[#292929] text-center space-y-2">
+          <Upload className="w-5 h-5 text-white mx-auto" />
+          <div className="text-xs text-[#A1A1A1]">
+            <label className="text-white hover:underline cursor-pointer font-semibold">
               Upload companion asset or document
               <input
                 type="file"
@@ -247,10 +247,10 @@ export default function NewSubmissionPage() {
                 onChange={handleFileChange}
               />
             </label>
-            <span className="text-silver/50"> (PDF, TXT, PNG, JPG up to 25MB)</span>
+            <span className="text-[#777777]"> (PDF, TXT, PNG, JPG up to 25MB)</span>
           </div>
           {file && (
-            <p className="text-xs text-signal-emerald font-mono">
+            <p className="text-xs text-white font-mono font-bold">
               Attached: {file.name} ({uploadedFileMeta?.content_type || "file"})
             </p>
           )}
@@ -258,17 +258,17 @@ export default function NewSubmissionPage() {
 
         {/* Submission Button / Progress */}
         {isSubmitting ? (
-          <div className="p-4 rounded-[4px] bg-midnight border border-teal-muted/40 text-center space-y-2">
-            <div className="inline-block animate-spin w-5 h-5 border-2 border-teal-muted border-t-transparent rounded-full" />
-            <p className="text-xs font-mono text-teal-muted">{analysisStep}</p>
+          <div className="p-4 rounded-[4px] bg-[#111111] border border-[#292929] text-center space-y-2">
+            <div className="inline-block animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
+            <p className="text-xs font-mono text-white">{analysisStep}</p>
           </div>
         ) : (
           <button
             type="submit"
-            className="w-full py-3.5 px-6 rounded-[4px] bg-offwhite text-midnight hover:bg-silver font-bold text-xs uppercase tracking-wider transition-colors shadow-technical flex items-center justify-center space-x-2"
+            className="w-full py-3.5 px-6 rounded-[4px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider transition-colors shadow-technical flex items-center justify-center space-x-2 font-mono"
           >
             <span>Run Brand Integrity Analysis</span>
-            <ArrowRight className="w-4 h-4 text-midnight" />
+            <ArrowRight className="w-4 h-4 text-black" />
           </button>
         )}
       </form>
