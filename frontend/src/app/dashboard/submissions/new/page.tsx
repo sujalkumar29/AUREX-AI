@@ -3,15 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
-  Sparkles,
-  FileText,
   Upload,
   ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
   AlertCircle,
-  Activity,
-  Layers
+  Activity
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { useBrand } from "@/lib/brand-context";

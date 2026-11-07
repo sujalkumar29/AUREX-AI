@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional, List
 from pydantic import BaseModel
-from app.schemas.submission import FindingResponse, AnalysisResultResponse, SubmissionResponse
+from app.schemas.submission import FindingResponse
 from app.schemas.brand import BrandResponse
 
 class ClaimMatrixItem(BaseModel):

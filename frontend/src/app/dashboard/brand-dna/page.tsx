@@ -2,27 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import {
-  Dna,
-  FileText,
   CheckCircle2,
-  XCircle,
   Plus,
   Trash2,
   Upload,
   BookOpen,
   Palette,
   Hash,
-  ShieldAlert,
   Sparkles,
-  ExternalLink,
   Activity,
-  Layers,
   Database,
   Building2,
   Edit3,
-  Globe,
-  Tag,
-  Check,
   Info,
   AlertTriangle,
   X
@@ -30,7 +21,7 @@ import {
 import { api } from "@/lib/api";
 import { useBrand } from "@/lib/brand-context";
 import { useAuth } from "@/lib/auth-context";
-import { BrandDNA, BrandGuideline, BrandFact, BrandTerminology, BrandAsset, Brand } from "@/types";
+import { BrandDNA, Brand } from "@/types";
 
 export default function BrandDNAWorkspacePage() {
   const { role } = useAuth();

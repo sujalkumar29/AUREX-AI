@@ -1,8 +1,7 @@
 import re
 import json
 import math
-from datetime import datetime
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 from sqlalchemy.orm import Session
 
 from app.models.brand import Brand, BrandGuideline, BrandFact, BrandTerminology, BrandAsset

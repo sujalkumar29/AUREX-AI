@@ -3,19 +3,13 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
-  ShieldCheck,
   FileText,
   AlertTriangle,
   Clock,
   TrendingUp,
   PlusCircle,
   Eye,
-  Search,
-  Activity,
-  Layers,
-  ArrowRight,
-  Filter,
-  Sparkles
+  Search
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { Submission, GovernanceInsights } from "@/types";

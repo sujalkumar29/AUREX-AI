@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
-import { Building2, UserCircle, LogOut, ChevronDown, Check, Activity, ShieldCheck, Sparkles } from "lucide-react";
+import { Building2, LogOut, ChevronDown, Check } from "lucide-react";
 import { Brand } from "@/types";
 
 interface NavbarProps {

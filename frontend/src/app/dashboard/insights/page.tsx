@@ -3,17 +3,12 @@
 import React, { useState, useEffect } from "react";
 import {
   BarChart3,
-  TrendingUp,
   AlertTriangle,
   Hash,
   FileCheck,
-  ShieldAlert,
   Sparkles,
-  ArrowRight,
-  BookOpen,
   CheckCircle2,
-  Activity,
-  Layers
+  Activity
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { GovernanceInsights } from "@/types";

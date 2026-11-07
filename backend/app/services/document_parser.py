@@ -1,7 +1,6 @@
-import os
 import uuid
 from pathlib import Path
-from typing import Tuple, Dict, Any, List
+from typing import Tuple, Dict, Any
 from PIL import Image
 import pypdf
 from fastapi import UploadFile, HTTPException

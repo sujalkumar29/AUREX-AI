@@ -1,10 +1,8 @@
-from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models.user import User
 from app.models.brand import Brand, BrandGuideline, BrandFact, BrandTerminology, BrandAsset
-from app.models.workflow import AuditLog
 from app.schemas.brand import (
     BrandDNAResponse,
     BrandGuidelineCreate, BrandGuidelineResponse,

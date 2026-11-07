@@ -1,8 +1,7 @@
 import re
 import math
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any
 from collections import Counter
-from app.config import settings
 
 class RAGService:
     def chunk_text(self, text: str, chunk_size: int = 300, overlap: int = 50) -> List[str]:

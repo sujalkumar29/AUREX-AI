@@ -1,4 +1,3 @@
-from typing import List, Dict, Any
 from collections import Counter
 from datetime import datetime, timedelta
 from fastapi import APIRouter, Depends

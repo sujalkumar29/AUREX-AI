@@ -1,11 +1,11 @@
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models.user import User
 from app.models.brand import Brand
 from app.models.submission import Submission, AnalysisResult, Finding
-from app.models.workflow import RevisionHistory, AuditLog
+from app.models.workflow import RevisionHistory
 from app.schemas.submission import SubmissionCreate, SubmissionUpdate, SubmissionResponse, AnalysisResultResponse
 from app.services.auth_service import get_current_user
 from app.services.analysis_engine import analysis_engine

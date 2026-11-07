@@ -1,7 +1,6 @@
 import io
 import hmac
 import hashlib
-from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 from reportlab.lib.pagesizes import letter

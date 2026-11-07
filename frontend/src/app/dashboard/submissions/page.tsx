@@ -3,16 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
-  FileText,
   PlusCircle,
   Search,
   Eye,
-  Filter,
-  CheckCircle2,
-  AlertTriangle,
-  Clock,
-  Sparkles,
-  ChevronRight,
   Activity
 } from "lucide-react";
 import { api } from "@/lib/api";

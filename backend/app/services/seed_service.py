@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from app.models.user import Organization, User
 from app.models.brand import Brand, BrandGuideline, BrandFact, BrandTerminology, BrandAsset
 from app.models.submission import Submission, AnalysisResult, Finding
-from app.models.workflow import Review, Comment, AuditLog, RevisionHistory
+from app.models.workflow import AuditLog
 from app.services.auth_service import get_password_hash
 
 def seed_database(db: Session):

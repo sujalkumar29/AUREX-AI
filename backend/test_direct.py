@@ -9,6 +9,7 @@ from app.routers.brand_dna import get_brand_dna
 from app.routers.submissions import list_submissions
 from app.routers.trust_passport import get_trust_passport
 from app.routers.insights import get_governance_insights
+from app.routers.workflow import get_audit_logs, get_comments, get_revisions
 from app.main import health_check, system_status
 
 def test_direct():
@@ -44,6 +45,14 @@ def test_direct():
         # 7. Insights
         ins = get_governance_insights(current_user=user, db=db)
         print(f"Insights: Avg Score {ins.avg_governance_score}%, Violations: {len(ins.top_violations)}")
+
+        # 8. Workflow (Audit Logs, Comments, Revisions)
+        logs = get_audit_logs(current_user=user, db=db)
+        print(f"Workflow: Retrieved {len(logs)} audit logs.")
+        if subs:
+            comments = get_comments(submission_id=subs[0].id, current_user=user, db=db)
+            revisions = get_revisions(submission_id=subs[0].id, current_user=user, db=db)
+            print(f"Workflow Submissions: {len(comments)} comments, {len(revisions)} revisions.")
 
         print("\n>>> ALL BACKEND CORE LOGIC & ROUTERS VERIFIED 100% SUCCESFUL! <<<")
     finally:

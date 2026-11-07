@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
-import { ArrowRight, Building2, User, Mail, Lock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function RegisterPage() {
   const router = useRouter();

@@ -52,16 +52,26 @@ AUREX does not simply identify mistakes or output ungrounded numbers. It **expla
 
 ## ⚡ Quickstart Guide
 
-### Option 1: One-Click Startup (Windows)
-Double-click `start_all.bat` or run:
+### Option 1: One-Click Startup (Full-Stack)
+Double-click `start_all.bat` in Windows Explorer or run the PowerShell script:
 ```powershell
 .\start_all.ps1
 ```
-This automatically launches both the FastAPI backend on port 8000 and the Next.js frontend on port 3000!
+This automatically launches both the FastAPI backend on port 8000 and the Next.js frontend on port 3000 in dedicated terminals!
+
+### Option 2: Independent Service Launchers (PowerShell)
+To start services independently using PowerShell:
+```powershell
+# Launch FastAPI backend API (port 8000)
+.\start_backend.ps1
+
+# Launch Next.js frontend application (port 3000)
+.\start_frontend.ps1
+```
 
 ---
 
-### Option 2: Manual Terminal Execution
+### Option 3: Manual Terminal Execution
 
 #### 1. Backend Setup:
 ```bash

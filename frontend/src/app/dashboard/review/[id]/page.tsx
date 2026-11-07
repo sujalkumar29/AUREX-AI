@@ -11,17 +11,11 @@ import {
   MessageSquare,
   History,
   Send,
-  User,
   ChevronRight,
-  Clock,
-  Sparkles,
-  ExternalLink,
-  Activity,
-  Layers,
-  Lock
+  Activity
 } from "lucide-react";
 import { api } from "@/lib/api";
-import { Submission, TrustPassportDetail, Comment, Review, RevisionHistory } from "@/types";
+import { Submission, TrustPassportDetail, Comment, Review } from "@/types";
 import { getStatusColor, formatDate } from "@/lib/utils";
 import { useAuth } from "@/lib/auth-context";
 

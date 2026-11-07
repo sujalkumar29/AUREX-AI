@@ -9,10 +9,7 @@ import {
   FileText,
   PlusCircle,
   BarChart3,
-  ShieldCheck,
-  Cpu,
-  Layers,
-  Sparkles
+  ShieldCheck
 } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
 

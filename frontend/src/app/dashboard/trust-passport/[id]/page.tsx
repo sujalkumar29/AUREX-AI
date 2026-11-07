@@ -6,22 +6,14 @@ import Link from "next/link";
 import {
   ShieldCheck,
   Download,
-  CheckCircle2,
-  AlertTriangle,
-  XCircle,
   FileText,
-  Clock,
   ExternalLink,
   ChevronRight,
   Sparkles,
-  ArrowRight,
-  RotateCcw,
   Check,
   User,
   Info,
-  Activity,
-  Layers,
-  Lock
+  Activity
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { TrustPassportDetail, Finding } from "@/types";
