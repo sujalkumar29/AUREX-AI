@@ -2,195 +2,412 @@
 
 > **AI recommends. Evidence explains. Humans decide.**
 
-**AUREX AI** is an enterprise-grade AI-powered Brand Governance & Intelligence Platform that guarantees every piece of marketing copy, social campaign, product description, document, and visual creative adheres strictly to approved brand identity, certified facts, prohibited/approved terminology, and visual design standards before publication.
+AUREX AI is an AI-powered brand governance and intelligence platform that evaluates marketing copy, press releases, corporate documents, and visual assets against an organization's approved brand guidelines before publication.
 
-AUREX does not simply identify mistakes or output ungrounded numbers. It **explains why** content deviates from guidelines, provides **verifiable supporting evidence receipts**, and offers **intent-preserving corrections** while ensuring human reviewers retain ultimate publishing authority.
-
----
-
-## 🏛️ Key Differentiators
-
-1. **Evidence-Linked Trust Passport™**:
-   Every content evaluation generates an official Trust Passport report. Claims are categorized into `SUPPORTED`, `CONFLICTING`, and `UNVERIFIED` (never prematurely assumed false), with each finding directly linked to official citations (audits, SEC 10-K, technical benchmarks) and downloadable as an audit-ready PDF.
-2. **Multimodal Brand Forensics**:
-   Evaluates both textual messaging and creative assets (images, logos, color hex deviations, typography, and WCAG AA accessibility contrast ratios).
-3. **Adaptive Brand Intelligence**:
-   Aggregates organization-wide evaluation telemetry into Governance Insights—identifying recurring terminology slips, unverified claim habits, and guideline gaps to iteratively fortify brand rules.
+Instead of treating AI output as an authority, AUREX AI connects each evaluation to a brand's **Brand DNA** repository: its verified facts, guidelines, terminology rules, and visual color tokens. It identifies supported, conflicting, and unverified claims, highlights brand inconsistencies, and provides a review workflow in which people retain the final publishing decision.
 
 ---
 
-## 🚀 System Architecture & Tech Stack
+## Contents
 
+- [Core Philosophy](#core-philosophy)
+- [Key Features](#key-features)
+- [How Governance Works](#how-governance-works)
+- [Technology Stack](#technology-stack)
+- [System Architecture](#system-architecture)
+- [Feature Implementation Status](#feature-implementation-status)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Demo Accounts](#demo-accounts)
+- [Application URLs](#application-urls)
+- [API Overview](#api-overview)
+- [Testing](#testing)
+- [Deployment Notes](#deployment-notes)
+- [Security](#security)
+- [Known Limitations](#known-limitations)
+- [Future Improvements](#future-improvements)
+- [Disclaimer](#disclaimer)
+
+---
+
+## Core Philosophy
+
+AUREX AI follows three principles:
+
+1. **AI recommends** — AI analyzes content, identifies potential risks, and suggests corrections. It does not make the final publishing decision.
+2. **Evidence explains** — Findings are connected to relevant Brand DNA facts or guideline information so reviewers can understand why an issue was raised.
+3. **Humans decide** — Authorized reviewers retain responsibility for approving, rejecting, or requesting changes to content.
+
+## Key Features
+
+- **Brand DNA Knowledge Vault:** Manage brand profiles, guidelines, verified facts, terminology rules, and visual color tokens. Supports ingestion of PDF, TXT, and Markdown documents.
+- **Content Submission Studio:** Submit text or supported documents and images for governance analysis. Includes sample compliant and violation test presets.
+- **Evidence-Grounded Claim Verification:** Classifies extracted claims as `SUPPORTED`, `CONFLICTING`, or `UNVERIFIED`.
+- **Dual-Engine Governance:** Uses Google Gemini when configured and a deterministic local rule-based NLP fallback when a Gemini API key is not available.
+- **Lexical Retrieval:** Uses in-memory tokenization, term-frequency cosine similarity, and numerical/entity pattern matching over Brand DNA content. It does not require an external vector database.
+- **Visual Forensics:** Inspects image properties, dimensions, dominant colors, brand-color distance, and WCAG contrast. Gemini visual analysis is available when configured.
+- **Trust Passport:** Presents a Governance Index, pillar breakdown, and claim findings. An HMAC-SHA256 signature can be used to verify report integrity against the server secret.
+- **PDF Export:** Generates Trust Passport reports using ReportLab.
+- **Human Review Station:** Supports reviewer decisions, discussion comments, and revision history, with separation-of-duties checks.
+- **Governance Insights:** Aggregates compliance metrics, terminology findings, unverified claims, and pillar scores.
+- **Audit Trail:** Records governance events such as submissions, reviews, and profile changes.
+
+## How Governance Works
+
+1. An administrator creates a brand profile and adds its approved facts, guidelines, terminology, and visual tokens to Brand DNA.
+2. A creator submits copy or an asset through the Submission Studio.
+3. The governance engine evaluates the submission against the available Brand DNA evidence.
+4. Claims are classified:
+   - `SUPPORTED` — supported by an explicit fact in Brand DNA.
+   - `CONFLICTING` — contradicts an established Brand DNA fact or policy.
+   - `UNVERIFIED` — no sufficient supporting evidence was found; this does **not** automatically mean the claim is false.
+5. Findings and recommendations are presented for human review.
+6. An authorized reviewer approves the submission, rejects it, or requests changes.
+
+## Technology Stack
+
+### Frontend
+
+- Next.js 15 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS
+- Lucide React
+- `clsx` and `tailwind-merge`
+- pnpm
+
+### Backend
+
+- Python 3.11+
+- FastAPI
+- Pydantic v2 and `pydantic-settings`
+- SQLAlchemy 2
+- Uvicorn
+- PyJWT and Passlib/bcrypt
+- pypdf and Pillow
+- ReportLab
+
+### AI and Retrieval
+
+- Google Gemini API through the `google-genai` SDK
+- Default model configured in the project: `gemini-2.5-flash`
+- Deterministic rule-based NLP fallback
+- In-memory lexical retrieval using token-frequency cosine similarity and pattern matching
+
+### Database and File Storage
+
+- SQLite by default
+- SQLAlchemy as the ORM
+- Local filesystem storage for uploads (`./uploads`)
+
+## System Architecture
+
+```mermaid
+flowchart TD
+    A["Next.js 15 Frontend<br/>React 19 · TypeScript · Tailwind"] --> B["API Proxy / Rewrites"]
+    B --> C["FastAPI Backend"]
+    C --> D["Authentication and RBAC"]
+    C --> E["Governance Orchestrator"]
+    C --> F["Document and Image Parser"]
+    E --> G["Brand DNA Lexical Retrieval"]
+    E --> H["Google Gemini API"]
+    E --> I["Deterministic NLP Fallback"]
+    C --> J[("SQLite Database")]
+    F --> K[("Local Upload Storage")]
+    C --> L["ReportLab PDF Export"]
 ```
-                          ┌─────────────────────────────────────┐
-                          │         Next.js 15 Frontend         │
-                          │  React 19, TypeScript, Tailwind CSS │
-                          │  (Deep Charcoal & Metallic Gold)    │
-                          └──────────────────┬──────────────────┘
-                                             │ REST API / JWT
-                                             ▼
-                          ┌─────────────────────────────────────┐
-                          │         FastAPI Backend Core        │
-                          │   Pydantic v2, SQLAlchemy ORM       │
-                          └──────┬───────────┬────────────┬─────┘
-                                 │           │            │
-             ┌───────────────────┘           │            └───────────────────┐
-             ▼                               ▼                                ▼
-   ┌──────────────────┐            ┌──────────────────┐             ┌──────────────────┐
-   │ Semantic RAG &   │            │ Google Gemini    │             │  PostgreSQL /    │
-   │ Deterministic    │            │ GenAI SDK        │             │  SQLite Database │
-   │ Evidence Matcher │            │ (Live AI Mode)   │             │  + PDF Engine    │
-   └──────────────────┘            └──────────────────┘             └──────────────────┘
+
+## Feature Implementation Status
+
+| Feature | Status | Notes |
+|---|---|---|
+| Brand DNA workspace | Implemented | CRUD for brand profiles, guidelines, facts, terminology, and visual tokens; document ingestion for PDF, TXT, and MD. |
+| Content submission studio | Implemented | Accepts text and supported document/image uploads. |
+| Claim verification | Implemented | Classifies claims as `SUPPORTED`, `CONFLICTING`, or `UNVERIFIED`. |
+| Dual-engine analysis | Implemented | Gemini analysis when configured; local rule-based fallback otherwise. |
+| Lexical retrieval | Implemented | In-memory cosine similarity and numerical/entity pattern matching. |
+| Visual forensics | Partially implemented | Pillow-based image inspection and color/contrast checks; advanced logo geometry and font detection are limited or rule-based. |
+| Trust Passport | Implemented | Governance score, pillar breakdown, claim matrix, and HMAC-SHA256 integrity signature. |
+| PDF export | Implemented | Server-side ReportLab export. |
+| Human review station | Implemented | Review decisions, comments, revision history, and separation-of-duties checks. |
+| Governance insights | Implemented | Aggregated governance metrics and findings. |
+| Audit trail | Implemented | Governance events stored in the database. |
+| Cloud object storage | Planned | Current uploads use local filesystem storage. |
+| Database migrations | Planned | Alembic migrations are not configured. |
+
+## Getting Started
+
+### Prerequisites
+
+Install the following:
+
+- Node.js 18.18+ (Node.js 20+ recommended)
+- pnpm 9+
+- Python 3.11+
+- Git
+
+Install pnpm if it is not already available:
+
+```bash
+npm install -g pnpm
 ```
 
-- **Frontend**: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, Lucide React, Recharts.
-- **Backend**: Python 3.13, FastAPI, SQLAlchemy ORM, Uvicorn, Pydantic Settings, PyPDF, Pillow, ReportLab.
-- **AI & RAG**: Google Gemini API (`gemini-2.5-flash` via official `google-genai` SDK) with automatic dual-mode fallback to deterministic local semantic governance when running without an external API key.
-- **Database**: SQLite (zero-configuration out of the box) with seamless PostgreSQL / `pgvector` compatibility via `DATABASE_URL`.
+### 1. Clone the Repository
 
----
+```bash
+git clone https://github.com/sujalkumar29/AUREX-AI.git
+cd AUREX-AI
+```
 
-## ⚡ Quickstart Guide
+### 2. Configure Environment Variables
 
-### Option 1: One-Click Startup (Full-Stack)
-Double-click `start_all.bat` in Windows Explorer or run the PowerShell script:
+Create your local environment file from the template:
+
+**Windows PowerShell:**
+```powershell
+Copy-Item .env.example .env
+```
+
+**macOS/Linux:**
+```bash
+cp .env.example .env
+```
+
+Generate a secure JWT secret:
+
+```bash
+python -c "import secrets; print(secrets.token_hex(32))"
+```
+
+Copy the generated value into `JWT_SECRET_KEY` in `.env`. Add your Gemini API key to `GEMINI_API_KEY` if you want to use Gemini-powered analysis. The local rule-based fallback is used when the key is not configured.
+
+### 3. Start the Application
+
+#### Option A: Full-stack launcher (Windows)
+
+From the repository root, run:
+
 ```powershell
 .\start_all.ps1
 ```
-This automatically launches both the FastAPI backend on port 8000 and the Next.js frontend on port 3000 in dedicated terminals!
 
-### Option 2: Independent Service Launchers (PowerShell)
-To start services independently using PowerShell:
+Alternatively, run `start_all.bat` from Windows Command Prompt or double-click it in File Explorer.
+
+#### Option B: Start services separately (Windows PowerShell)
+
+Backend:
+
 ```powershell
-# Launch FastAPI backend API (port 8000)
 .\start_backend.ps1
+```
 
-# Launch Next.js frontend application (port 3000)
+Frontend, in a second terminal:
+
+```powershell
 .\start_frontend.ps1
 ```
 
----
+#### Option C: Manual setup
 
-### Option 3: Manual Terminal Execution
+**Backend**
 
-#### 1. Backend Setup:
 ```bash
 cd backend
-# The virtual environment is pre-configured in backend/venv
-venv\Scripts\activate
+python -m venv venv
+```
+
+Activate the environment:
+
+```powershell
+# Windows PowerShell
+.\venv\Scripts\Activate.ps1
+```
+
+```bat
+:: Windows Command Prompt
+venv\Scripts\activate.bat
+```
+
+```bash
+# macOS/Linux
+source venv/bin/activate
+```
+
+Install dependencies and start the API:
+
+```bash
 pip install -r requirements.txt
 uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
-*Backend runs at: `http://127.0.0.1:8000` (Interactive Swagger Docs at `http://127.0.0.1:8000/docs`)*
 
-#### 2. Frontend Setup:
+**Frontend** — open a second terminal:
+
 ```bash
 cd frontend
 pnpm install
 pnpm dev
 ```
-*Frontend runs at: `http://localhost:3000`*
 
----
+## Environment Variables
 
-## 🔑 Demo Personas for Quick Evaluation
+The backend reads configuration through `backend/app/config.py`. The following variables are documented by the project:
 
-The application includes an instant **Persona Switcher** on the login page (`/login`) for evaluation:
+| Variable | Default | Purpose |
+|---|---|---|
+| `PROJECT_NAME` | `AUREX AI` | Application name |
+| `TAGLINE` | `The Gold Standard of Brand Integrity` | Application tagline |
+| `VERSION` | `1.0.0` | API version |
+| `ENVIRONMENT` | `development` | Runtime environment |
+| `DATABASE_URL` | `sqlite:///./aurex_ai.db` | SQLAlchemy database URL |
+| `JWT_SECRET_KEY` | Empty | Secret used to sign JWTs; configure a secure value of at least 32 characters. |
+| `ALGORITHM` | `HS256` | JWT signing algorithm |
+| `ACCESS_TOKEN_EXPIRE_MINUTES` | `10080` | Access-token lifetime in minutes (7 days) |
+| `GEMINI_API_KEY` | Empty | Optional Gemini API key |
+| `GEMINI_MODEL` | `gemini-2.5-flash` | Gemini model identifier |
+| `GEMINI_EMBEDDING_MODEL` | `text-embedding-004` | Embedding model configuration |
+| `UPLOAD_DIR` | `./uploads` | Local upload directory |
+| `MAX_UPLOAD_SIZE_MB` | `25` | Maximum upload size in MB |
+| `ALLOWED_ORIGINS` | Local frontend origin | CORS origin allowlist |
 
-| Role | Email | Password | Responsibility |
-| :--- | :--- | :--- | :--- |
-| **Brand Admin** | `admin@aurex.ai` | `aurex123` | Configures Brand DNA, Guidelines, Facts & Vocab |
-| **Content Creator** | `creator@aurex.ai` | `aurex123` | Drafts campaigns, runs analysis, applies suggested fixes |
-| **Brand Reviewer** | `reviewer@aurex.ai` | `aurex123` | Examines Trust Passports, reviews comments, grants signoff |
+Keep `.env` out of version control. Never commit API keys or production secrets.
 
----
+## Demo Accounts
 
-## 📦 Core Feature Walkthrough
+The application seeds development/demo personas on first database initialization. The login page includes a demo persona switcher.
 
-### 1. Brand DNA Workspace (`/dashboard/brand-dna`)
-- **Brand Guidelines**: Mission, personality, voice rules, approved and prohibited messaging.
-- **Brand Facts**: Official quantitative claims, SLA uptime figures, regulatory certifications, and references.
-- **Brand Terminology**: Vocabulary dictionary mapping prohibited phrasing to approved enterprise terms.
-- **Visual Assets**: Design tokens, color swatches with HEX codes, typography systems.
-- **Document Ingestion**: Upload PDF or TXT guideline files with automatic semantic extraction.
+| Role | Email | Password |
+|---|---|---|
+| Brand Director (Admin) | `admin@aurex.ai` | `aurex123` |
+| Lead Copywriter (Creator) | `creator@aurex.ai` | `aurex123` |
+| Brand Governance Officer (Reviewer) | `reviewer@aurex.ai` | `aurex123` |
 
-### 2. AI Content Submission Studio (`/dashboard/submissions/new`)
-- Submit text, marketing copy, social media captions, or upload documents/images.
-- Includes preset test buttons:
-  - **Load Compliant Copy**: Demonstrates high-scoring (~96/100) verified claims.
-  - **Load Violation Copy**: Triggers prohibited terms (`cheap settlement`), SLA conflicts (`99.999%` vs `99.995%`), and voice slips.
+> **Warning:** These credentials are for local development and demonstrations only. Change or disable default credentials before exposing an instance publicly.
 
-### 3. The Signature Trust Passport™ (`/dashboard/trust-passport/[id]`)
-- **Executive Governance Score**: 0 to 100 with official governance status badge.
-- **Four Core Pillars**: Brand Voice, Terminology Compliance, Claim Integrity, and Visual Standards.
-- **Three-Tier Claim Matrix**: Categorizes assertions into `SUPPORTED`, `CONFLICTING`, or `UNVERIFIED`.
-- **Traceable Receipts**: Links findings to exact audited records.
-- **Apply Fix**: One-click correction directly modifies the draft and re-evaluates compliance.
-- **Official PDF Export**: Generates tamper-evident PDF certificates.
+## Application URLs
 
-### 4. Human-in-the-Loop Review Station (`/dashboard/review/[id]`)
-- Review actions: `Approve Publication`, `Request Revisions`, or `Reject Content`.
-- Decision rationale logging and audit trail.
-- Multi-user threaded discussion between creators and reviewers.
-- Version history and revision diff snapshots.
+When running locally:
 
-### 5. Governance Insights & Adaptive Policies (`/dashboard/insights`)
-- Top recurring brand violations chart.
-- Prohibited vocabulary leaderboard.
-- Recurring unverified claim patterns.
-- Adaptive policy recommendations to improve company guidelines based on writer habits.
+| Service | URL |
+|---|---|
+| Frontend | http://localhost:3000 |
+| Backend API | http://127.0.0.1:8000 |
+| Swagger UI | http://127.0.0.1:8000/docs |
+| ReDoc | http://127.0.0.1:8000/redoc |
 
----
+## API Overview
 
-### Environment Configuration
+The backend exposes REST endpoints through FastAPI. Interactive endpoint documentation is available at `/docs` and `/redoc`.
 
-AUREX AI uses environment variables to manage application configuration and sensitive credentials.
+| Area | Method | Endpoint | Purpose |
+|---|---|---|---|
+| System | `GET` | `/health` | Health check |
+| System | `GET` | `/api/v1/system-status` | AI engine and database status |
+| Authentication | `POST` | `/api/v1/auth/register` | Register a user |
+| Authentication | `POST` | `/api/v1/auth/login` | Authenticate and issue a JWT |
+| Authentication | `GET` | `/api/v1/auth/me` | Get the authenticated user |
+| Brands | `GET` | `/api/v1/brands` | List brand profiles |
+| Brands | `POST` | `/api/v1/brands` | Create a brand profile |
+| Brand DNA | `GET` | `/api/v1/brand-dna/{brand_id}` | Retrieve Brand DNA |
+| Submissions | `GET` | `/api/v1/submissions` | List submissions |
+| Submissions | `POST` | `/api/v1/submissions` | Create a submission |
+| Submissions | `POST` | `/api/v1/submissions/{id}/analyze` | Analyze a submission |
+| Trust Passport | `GET` | `/api/v1/trust-passport/{id}` | Retrieve a Trust Passport |
+| Trust Passport | `GET` | `/api/v1/trust-passport/{id}/pdf` | Export a Trust Passport PDF |
+| Workflow | `POST` | `/api/v1/workflow/reviews` | Submit a reviewer decision |
+| Workflow | `POST` | `/api/v1/workflow/comments` | Add a discussion comment |
+| Insights | `GET` | `/api/v1/insights` | Retrieve governance metrics |
+| Upload | `POST` | `/api/v1/upload` | Upload a supported document or image |
 
-1. Create your local environment file:
+Protected endpoints require an `Authorization: Bearer <token>` header obtained through the login endpoint. Refer to the live Swagger documentation for the complete request and response schemas.
 
-   cp .env.example .env
+## Testing
 
-2. Open .env and configure the required values.
+The repository documents the following verification commands.
 
-3. Generate a secure JWT secret.
+### Backend direct verification
 
-4. Add your Gemini API key if you want to enable live Gemini-powered analysis.
-
-5. Never commit your .env file or expose credentials publicly.
-
-See .env.example for the required configuration variables.
-
----
-
-## 🧪 Verification & Automated E2E Test Suite
-
-To execute the 10-point comprehensive End-to-End Governance & Security Test Suite:
 ```powershell
 cd backend
-.\venv\Scripts\python.exe test_e2e_suite.py
-```
-Output:
-```
-=======================================================================
-        AUREX AI - AUTOMATED E2E GOVERNANCE AUDIT SUITE               
-=======================================================================
-[PASSED] TEST 1: Full Submission Pipeline
-[PASSED] TEST 2: Supported Claim Verification
-[PASSED] TEST 3: Conflicting Claim Detection
-[PASSED] TEST 4: Unverified Claim Handling
-[PASSED] TEST 5: Prohibited Terminology Enforcement
-[PASSED] TEST 6: Brand Voice Inconsistency
-[PASSED] TEST 7: Human Sovereign Review Workflow
-[PASSED] TEST 8: Cross-Organization Tenant Isolation
-[PASSED] TEST 9: Unsupported File Format Rejection
-[PASSED] TEST 10: Database State Persistence
-
-Final Score: 10/10 Tests Passed (100.0%)
+python test_direct.py
 ```
 
----
+The project notes report that this script verifies health/status checks, login and JWT generation, Brand DNA retrieval, submission analysis, Trust Passport scoring, Governance Insights, and workflow records.
 
-## 📜 Compliance Disclaimer
+### Frontend type checking
 
-AUREX AI is an assistive governance recommendation engine. AI evaluations do not constitute a legal guarantee of factual accuracy. Final publishing decisions are reserved for designated human reviewers.
+```bash
+cd frontend
+pnpm exec tsc --noEmit
+```
 
+### Frontend production build
+
+```bash
+cd frontend
+pnpm run build
+```
+
+The project notes report a successful frontend type check and production build. The asynchronous scripts `backend/test_e2e_suite.py` and `backend/test_api.py` are available, but are not listed as verified in the project notes; Windows Python 3.13 environments may encounter ASGI event-loop teardown hangs with these scripts.
+
+## Deployment Notes
+
+The configuration described above is for local development. The following are deployment considerations, not a claim that a production deployment has already been completed.
+
+### Frontend
+
+A Next.js frontend can be deployed to Vercel with:
+
+- Root directory: `frontend`
+- Build command: `pnpm run build`
+
+Configure the API rewrite/proxy destination in `frontend/next.config.mjs` to point to the deployed backend using an environment variable. Do not leave it pointing to `127.0.0.1:8000` in a hosted deployment.
+
+### Backend
+
+A FastAPI backend can be hosted on Render or another container platform. A typical start command is:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+Configure production environment variables, including `ENVIRONMENT`, `DATABASE_URL`, `JWT_SECRET_KEY`, `ALLOWED_ORIGINS`, and (if used) `GEMINI_API_KEY`.
+
+### Database and uploads
+
+- SQLite is the configured default database.
+- PostgreSQL deployment requires a compatible driver; one is not included in the documented default requirements.
+- Alembic migrations are not currently configured.
+- Uploaded files are stored locally in `UPLOAD_DIR`. Hosted environments with ephemeral filesystems require persistent disk or an object-storage integration to retain uploads across restarts and deployments.
+
+## Security
+
+- Keep `.env` files and secrets out of source control.
+- Keep `GEMINI_API_KEY` and `JWT_SECRET_KEY` on the backend; do not expose them in frontend code.
+- JWTs use the configured signing algorithm (`HS256` by default).
+- Password hashing uses Passlib/bcrypt.
+- Role-based permissions and separation-of-duties checks are part of the review workflow.
+- Trust Passport HMAC-SHA256 signatures support integrity verification against the server secret. They are not an absolute guarantee against key compromise or database-level modification.
+- Configure `ALLOWED_ORIGINS` narrowly for the environments where the frontend is hosted.
+
+## Known Limitations
+
+1. **Local file storage:** Uploads are stored on disk. Ephemeral hosting platforms can lose these files unless persistent storage is configured.
+2. **SQLite default:** PostgreSQL requires an additional database driver and configuration.
+3. **No migration pipeline:** Schema creation currently uses SQLAlchemy `Base.metadata.create_all`; Alembic migrations are not configured.
+4. **Lexical retrieval:** Retrieval uses in-memory lexical similarity and pattern matching, not a dedicated vector database or embedding-based vector search.
+5. **Visual forensics scope:** Current checks cover image properties, dimensions, color analysis, and contrast. Advanced logo geometry, clearspace, and typography verification are limited, rule-based, or dependent on Gemini analysis.
+6. **Enterprise multi-tenancy:** The data model supports multiple brands, but full organizational tenant isolation and enterprise SSO integrations are not implemented.
+7. **Async test scripts:** The asynchronous ASGI test scripts may hang during event-loop teardown in some Windows Python 3.13 environments.
+
+## Future Improvements
+
+- Add durable cloud object storage (AWS S3 or Google Cloud Storage).
+- Introduce vector database/semantic retrieval support (for example, pgvector or ChromaDB).
+- Add Alembic-based database migrations.
+- Improve layout and visual verification for logo clearspace, alignment, and typography.
+- Add enterprise SSO and directory integrations using SAML or OIDC.
+- Add governance notifications through Slack, Microsoft Teams, and webhooks.
+
+## Disclaimer
+
+AUREX AI is an assistive brand-governance platform. AI evaluations, claim classifications, and remediation suggestions do not constitute legal advice or guarantee factual accuracy. Final publication, compliance, and editorial decisions remain the responsibility of authorized human reviewers.
