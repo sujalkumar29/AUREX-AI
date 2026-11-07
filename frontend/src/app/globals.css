@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #14231F;
+  --foreground: #F3F5F2;
+}
+
+body {
+  background-color: #14231F;
+  color: #F3F5F2;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #14231F;
+}
+::-webkit-scrollbar-thumb {
+  background: #242B2A;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #71958C;
+}
+
+/* Technical Hairline Grid Patterns */
+.bg-tech-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(220, 226, 222, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 226, 222, 0.04) 1px, transparent 1px);
+}
+
+.bg-tech-dots {
+  background-size: 24px 24px;
+  background-image: radial-gradient(circle, rgba(220, 226, 222, 0.08) 1px, transparent 1px);
+}
+
+.bg-tech-grid-light {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(32, 44, 53, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(32, 44, 53, 0.05) 1px, transparent 1px);
+}
+
+/* Hairline borders */
+.border-hairline {
+  border: 1px solid rgba(220, 226, 222, 0.12);
+}
+
+.border-hairline-light {
+  border: 1px solid rgba(32, 44, 53, 0.12);
+}
+
+/* Linear-style surface lighting */
+.surface-glass-dark {
+  background: rgba(36, 43, 42, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(220, 226, 222, 0.1);
+}
+
+.surface-glass-teal {
+  background: rgba(20, 35, 31, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(113, 149, 140, 0.2);
+}
+
+/* Crisp Technical Badges */
+.badge-tech {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

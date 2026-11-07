@@ -1,0 +1,29 @@
+# Backend environment & secrets
+.env
+.env.*
+!.env.example
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+aurex_ai.db
+
+# Uploads
+uploads/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+

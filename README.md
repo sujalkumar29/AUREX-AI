@@ -132,51 +132,50 @@ The application includes an instant **Persona Switcher** on the login page (`/lo
 
 ---
 
-## 🛡️ Environment Variables (`backend/.env`)
+### Environment Configuration
 
-```ini
-PROJECT_NAME="AUREX AI"
-TAGLINE="The Gold Standard of Brand Integrity"
-VERSION="1.0.0"
+AUREX AI uses environment variables to manage application configuration and sensitive credentials.
 
-# Database: SQLite by default; set to postgresql://user:pass@host:5432/db for PostgreSQL
-DATABASE_URL="sqlite:///./aurex_ai.db"
+1. Create your local environment file:
 
-# JWT Authentication
-JWT_SECRET_KEY="aurex_super_secret_jwt_key_2026_enterprise_brand_integrity"
-ACCESS_TOKEN_EXPIRE_MINUTES=10080
+   cp .env.example .env
 
-# Google Gemini API (Optional)
-# If provided, AUREX AI enables live Gemini 2.5 Flash RAG & visual forensics.
-# If omitted, AUREX AI smoothly operates on its deterministic local governance engine.
-GEMINI_API_KEY=""
-GEMINI_MODEL="gemini-2.5-flash"
-GEMINI_EMBEDDING_MODEL="text-embedding-004"
+2. Open .env and configure the required values.
 
-# Uploads
-UPLOAD_DIR="./uploads"
-```
+3. Generate a secure JWT secret.
+
+4. Add your Gemini API key if you want to enable live Gemini-powered analysis.
+
+5. Never commit your .env file or expose credentials publicly.
+
+See .env.example for the required configuration variables.
 
 ---
 
-## 🧪 Verification & Testing
+## 🧪 Verification & Automated E2E Test Suite
 
-To execute the backend verification test suite:
+To execute the 10-point comprehensive End-to-End Governance & Security Test Suite:
 ```powershell
 cd backend
-.\venv\Scripts\python.exe test_direct.py
+.\venv\Scripts\python.exe test_e2e_suite.py
 ```
 Output:
 ```
-Health: {'status': 'healthy', 'app': 'AUREX AI', 'version': '1.0.0'}
-System Status: {'ai_engine': 'Deterministic Brand Governance Engine (Demo/Local Mode)'}
-Auth Login: Success!
-Brands: Retrieved 2 brands. Primary: AuraPay Global
-Brand DNA: 4 facts, 5 terms, 3 guidelines
-Submissions: Retrieved 2 submissions.
-Trust Passport: Score 58.5/100, Status: 'Changes Required', Total Findings: 4
-Insights: Avg Score 77.2%, Violations: 4
->>> ALL BACKEND CORE LOGIC & ROUTERS VERIFIED 100% SUCCESFUL! <<<
+=======================================================================
+        AUREX AI - AUTOMATED E2E GOVERNANCE AUDIT SUITE               
+=======================================================================
+[PASSED] TEST 1: Full Submission Pipeline
+[PASSED] TEST 2: Supported Claim Verification
+[PASSED] TEST 3: Conflicting Claim Detection
+[PASSED] TEST 4: Unverified Claim Handling
+[PASSED] TEST 5: Prohibited Terminology Enforcement
+[PASSED] TEST 6: Brand Voice Inconsistency
+[PASSED] TEST 7: Human Sovereign Review Workflow
+[PASSED] TEST 8: Cross-Organization Tenant Isolation
+[PASSED] TEST 9: Unsupported File Format Rejection
+[PASSED] TEST 10: Database State Persistence
+
+Final Score: 10/10 Tests Passed (100.0%)
 ```
 
 ---
