@@ -23,68 +23,206 @@ body {
 
 /* Monochromatic Technical Scrollbars */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: rgba(0, 0, 0, 0.9);
 }
 ::-webkit-scrollbar-thumb {
-  background: #292929;
-  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #777777;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   GLASSMORPHISM DESIGN SYSTEM (LEVELS 1-5)
+────────────────────────────────────────────────────────────── */
+
+/* Level 1: Standard Glass Container / Panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 
+    0 10px 32px 0 rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Level 2: Interactive Glass Card with Hover Elevation & Glow */
+.glass-card {
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.085);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 16px 44px 0 rgba(0, 0, 0, 0.6),
+    0 0 24px 0 rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Level 3: Elevated Glass / Featured Widgets / Inspector Core */
+.glass-card-elevated {
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 
+    0 18px 50px -8px rgba(0, 0, 0, 0.7),
+    0 0 32px -4px rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+}
+
+/* Level 4: Recessed Inner Slot for Copy, Code, and Findings */
+.glass-inner {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    inset 0 2px 6px 0 rgba(0, 0, 0, 0.6),
+    0 1px 0 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Level 5: Glass Nav / Header */
+.glass-nav {
+  background: rgba(8, 8, 8, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 
+    0 4px 24px 0 rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Modal Dialogs */
+.glass-modal {
+  background: rgba(16, 16, 16, 0.92);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  box-shadow: 
+    0 24px 70px 0 rgba(0, 0, 0, 0.85),
+    0 0 40px 0 rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.20);
+}
+
+/* Translucent Glass Inputs */
+.glass-input {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(255, 255, 255, 0.35);
+  outline: none;
+  box-shadow: 
+    0 0 16px 0 rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Translucent Secondary Glass Buttons */
+.glass-button {
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  color: #FFFFFF;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.085);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.4),
+    0 0 16px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Glass Pills & Badges */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BACKGROUND DEPTH & AMBIENT RADIAL LIGHTING
+────────────────────────────────────────────────────────────── */
+
+/* Ambient Radial Glow */
+.glow-ambient {
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 255, 255, 0.07) 0%, transparent 70%);
+}
+
+.glow-ambient-center {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+}
+
+.glow-ambient-bottom {
+  background: radial-gradient(ellipse 70% 40% at 50% 120%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
 }
 
 /* Crisp Technical Hairline Grid Patterns */
 .bg-tech-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
 .bg-tech-dots {
   background-size: 24px 24px;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
 }
 
-.bg-tech-grid-dense {
-  background-size: 16px 16px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+/* Subtle Shimmer / Moving Light Reflection */
+.shimmer-sweep {
+  position: relative;
+  overflow: hidden;
 }
 
-/* Hairline borders */
-.border-hairline {
-  border: 1px solid #292929;
-}
-
-.border-subtle {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Linear-style surface lighting (Monochrome) */
-.surface-glass-dark {
-  background: rgba(17, 17, 17, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #292929;
-}
-
-.surface-glass-elevated {
-  background: rgba(24, 24, 24, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-/* Crisp Technical Badges */
-.badge-tech {
-  font-family: 'Geist Mono', 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.04) 20%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  animation: shimmer 6s infinite;
+  pointer-events: none;
 }

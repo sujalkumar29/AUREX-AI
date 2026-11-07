@@ -22,9 +22,9 @@ class RecurringClaimIssue(BaseModel):
 class ComplianceTrendPoint(BaseModel):
     date: str
     average_score: float
-    total_submissions: int
-    approved_count: int
-    changes_required_count: int
+    total_submissions: int = 0
+    approved_count: int = 0
+    changes_required_count: int = 0
 
 class CategoryBreakdownItem(BaseModel):
     category_name: str
@@ -32,14 +32,14 @@ class CategoryBreakdownItem(BaseModel):
     percentage: float
 
 class GovernanceInsightsResponse(BaseModel):
-    total_submissions: int
-    overall_compliance_rate: float
-    approved_percentage: float
-    avg_governance_score: float
-    top_violations: List[TopViolationItem]
-    frequent_terminology_mistakes: List[TerminologyMistakeItem]
-    recurring_unverified_claims: List[RecurringClaimIssue]
-    category_breakdown: List[CategoryBreakdownItem]
-    compliance_timeline: List[ComplianceTrendPoint]
-    recent_governance_actions: List[Dict[str, Any]]
+    total_submissions: int = 0
+    overall_compliance_rate: float = 0.0
+    approved_percentage: float = 0.0
+    avg_governance_score: float = 0.0
+    top_violations: List[TopViolationItem] = []
+    frequent_terminology_mistakes: List[TerminologyMistakeItem] = []
+    recurring_unverified_claims: List[RecurringClaimIssue] = []
+    category_breakdown: List[CategoryBreakdownItem] = []
+    compliance_timeline: List[ComplianceTrendPoint] = []
+    recent_governance_actions: List[Dict[str, Any]] = []
 

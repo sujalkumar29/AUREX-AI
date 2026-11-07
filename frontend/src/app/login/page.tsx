@@ -44,16 +44,20 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-black text-[#F5F5F5] flex flex-col justify-center py-12 px-6 lg:px-8 relative selection:bg-white selection:text-black font-sans">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
+      {/* Background ambient lighting */}
+      <div className="fixed inset-0 glow-ambient pointer-events-none z-0" />
+      <div className="fixed inset-0 bg-tech-grid opacity-60 pointer-events-none z-0" />
+
+      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center relative z-10">
         <Link href="/" className="inline-flex items-center space-x-3 mb-6 group">
-          <div className="w-8 h-8 rounded-[4px] bg-[#111111] border border-[#292929] flex items-center justify-center text-white shadow-technical group-hover:border-white transition-colors">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div className="w-9 h-9 rounded-[6px] bg-white/5 border border-white/20 flex items-center justify-center text-white shadow-technical group-hover:border-white/50 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 3L3 21H7.5L12 11.5L16.5 21H21L12 3Z" fill="#FFFFFF" />
               <path d="M8.5 15.5H15.5" stroke="#FFFFFF" strokeWidth="1.8" />
             </svg>
           </div>
           <span className="font-extrabold text-2xl tracking-tight text-white">
-            AUREX <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#181818] border border-[#292929]">AI</span>
+            AUREX <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-[4px] bg-white/10 border border-white/15">AI</span>
           </span>
         </Link>
         <h2 className="text-2xl font-extrabold text-white tracking-tight">
@@ -64,17 +68,17 @@ export default function LoginPage() {
         </p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-[#090909] py-8 px-6 sm:px-10 rounded-[8px] border border-[#292929] shadow-technical">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative z-10">
+        <div className="glass-card-elevated shimmer-sweep py-8 px-6 sm:px-10 rounded-[14px] border border-white/20 shadow-2xl backdrop-blur-2xl">
           {error && (
-            <div className="mb-4 p-3 rounded-[4px] bg-[#181818] border-2 border-[#D4D4D4] text-xs text-white font-mono">
+            <div className="mb-4 p-3 rounded-[6px] bg-[#181818] border-2 border-[#D4D4D4] text-xs text-white font-mono">
               {error}
             </div>
           )}
 
           {/* Quick Demo Persona Switcher */}
-          <div className="mb-6 pb-6 border-b border-[#292929]">
-            <span className="block text-[10px] font-mono uppercase tracking-[0.16em] text-[#A1A1A1] mb-2.5">
+          <div className="mb-6 pb-6 border-b border-white/10">
+            <span className="block text-[10px] font-mono uppercase tracking-[0.16em] text-[#D4D4D4] mb-2.5 font-semibold">
               Instant Persona Switcher (For Evaluation)
             </span>
             <div className="grid grid-cols-3 gap-2">
@@ -82,7 +86,7 @@ export default function LoginPage() {
                 type="button"
                 onClick={() => handleDemo("admin")}
                 disabled={loading}
-                className="p-2.5 rounded-[4px] bg-[#111111] hover:bg-[#181818] border border-[#292929] hover:border-white text-left transition-colors"
+                className="glass-button p-2.5 rounded-[8px] text-left transition-all hover:-translate-y-0.5"
               >
                 <div className="text-[9px] uppercase font-mono text-[#777777]">Role 01</div>
                 <div className="text-xs font-bold text-white mt-0.5">Admin</div>
@@ -93,7 +97,7 @@ export default function LoginPage() {
                 type="button"
                 onClick={() => handleDemo("creator")}
                 disabled={loading}
-                className="p-2.5 rounded-[4px] bg-[#111111] hover:bg-[#181818] border border-[#292929] hover:border-white text-left transition-colors"
+                className="glass-button p-2.5 rounded-[8px] text-left transition-all hover:-translate-y-0.5"
               >
                 <div className="text-[9px] uppercase font-mono text-[#777777]">Role 02</div>
                 <div className="text-xs font-bold text-white mt-0.5">Creator</div>
@@ -104,7 +108,7 @@ export default function LoginPage() {
                 type="button"
                 onClick={() => handleDemo("reviewer")}
                 disabled={loading}
-                className="p-2.5 rounded-[4px] bg-[#111111] hover:bg-[#181818] border border-[#292929] hover:border-white text-left transition-colors"
+                className="glass-button p-2.5 rounded-[8px] text-left transition-all hover:-translate-y-0.5"
               >
                 <div className="text-[9px] uppercase font-mono text-[#777777]">Role 03</div>
                 <div className="text-xs font-bold text-white mt-0.5">Reviewer</div>
@@ -124,7 +128,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@aurex.ai"
-                className="w-full rounded-[4px] bg-[#111111] border border-[#292929] px-3.5 py-2.5 text-xs text-white placeholder-[#777777] focus:outline-none focus:border-white font-mono transition-colors"
+                className="glass-input w-full rounded-[6px] px-3.5 py-2.5 text-xs placeholder-[#777777] font-mono"
               />
             </div>
 
@@ -138,14 +142,14 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full rounded-[4px] bg-[#111111] border border-[#292929] px-3.5 py-2.5 text-xs text-white placeholder-[#777777] focus:outline-none focus:border-white font-mono transition-colors"
+                className="glass-input w-full rounded-[6px] px-3.5 py-2.5 text-xs placeholder-[#777777] font-mono"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-2 py-3 px-4 rounded-[4px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 font-mono shadow-technical"
+              className="w-full mt-2 py-3 px-4 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center space-x-2 disabled:opacity-50 font-mono shadow-[0_0_20px_rgba(255,255,255,0.22)] hover:shadow-[0_0_28px_rgba(255,255,255,0.35)]"
             >
               <span>{loading ? "Authenticating..." : "Sign In to Workspace"}</span>
               <ArrowRight className="w-3.5 h-3.5 text-black" />

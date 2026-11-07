@@ -40,10 +40,10 @@ export default function GovernanceInsightsPage() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 font-sans text-[#F5F5F5]">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-[6px] bg-[#090909] border border-[#292929] relative overflow-hidden shadow-technical">
-        <div className="space-y-1 z-10">
-          <div className="inline-flex items-center space-x-2 text-[10px] font-mono uppercase tracking-[0.16em] text-[#A1A1A1]">
+      {/* Header - Glassmorphic Analytics Banner */}
+      <div className="glass-card-elevated shimmer-sweep p-6 md:p-8 rounded-[14px] border border-white/18 relative overflow-hidden shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 backdrop-blur-2xl">
+        <div className="space-y-1.5 z-10">
+          <div className="glass-pill inline-flex items-center space-x-2 text-[10px] font-mono uppercase tracking-[0.16em] text-[#D4D4D4] px-2.5 py-1 rounded-[4px]">
             <BarChart3 className="w-3.5 h-3.5 text-white" />
             <span>ADAPTIVE BRAND INTELLIGENCE</span>
           </div>
@@ -55,23 +55,23 @@ export default function GovernanceInsightsPage() {
           </p>
         </div>
 
-        <div className="flex items-center space-x-4 bg-[#111111] p-4 rounded-[4px] border border-[#292929] z-10">
+        <div className="glass-card flex items-center space-x-4 p-4 rounded-[10px] border border-white/15 z-10 shadow-xl">
           <div>
-            <span className="text-[10px] uppercase font-mono text-[#777777]">Overall Compliance</span>
-            <p className="text-2xl font-mono font-bold text-white">{insights.overall_compliance_rate}%</p>
+            <span className="text-[10px] uppercase font-mono text-[#A1A1A1] font-semibold">Overall Compliance</span>
+            <p className="text-2xl font-mono font-bold text-white tracking-tight">{insights.overall_compliance_rate}%</p>
           </div>
-          <div className="w-px h-8 bg-[#292929]" />
+          <div className="w-px h-8 bg-white/10" />
           <div>
-            <span className="text-[10px] uppercase font-mono text-[#777777]">Approval Rate</span>
-            <p className="text-2xl font-mono font-bold text-white">{insights.approved_percentage}%</p>
+            <span className="text-[10px] uppercase font-mono text-[#A1A1A1] font-semibold">Approval Rate</span>
+            <p className="text-2xl font-mono font-bold text-white tracking-tight">{insights.approved_percentage}%</p>
           </div>
         </div>
       </div>
 
-      {/* Top 3 Analytical Columns */}
+      {/* Top 3 Analytical Columns - Glass Panels */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Column 1: Most Frequent Violations */}
-        <div className="p-6 rounded-[6px] bg-[#090909] border border-[#292929] space-y-4 shadow-technical">
+        <div className="glass-panel p-6 rounded-[12px] border border-white/12 space-y-4 shadow-xl">
           <div className="flex items-center space-x-2 text-white">
             <AlertTriangle className="w-4 h-4 text-white" />
             <h3 className="text-xs font-mono uppercase tracking-wider text-white font-bold">Top Brand Violations</h3>
@@ -81,14 +81,14 @@ export default function GovernanceInsightsPage() {
           </p>
           <div className="space-y-2.5 pt-1">
             {insights.top_violations.map((v, i) => (
-              <div key={i} className="p-3 rounded-[4px] bg-[#111111] border border-[#292929] space-y-1">
+              <div key={i} className="glass-card p-3 rounded-[8px] border border-white/10 space-y-1">
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-bold text-white truncate max-w-[180px]">{v.issue_title}</span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-[2px] bg-[#181818] border border-[#292929] text-white font-bold">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-[#181818] border border-white/15 text-white font-bold">
                     {v.count} flags
                   </span>
                 </div>
-                <div className="flex items-center justify-between text-[11px] text-[#777777] font-mono">
+                <div className="flex items-center justify-between text-[11px] text-[#A1A1A1] font-mono">
                   <span className="capitalize">{v.category.replace('_', ' ')}</span>
                   <span className="uppercase text-[10px]">{v.severity}</span>
                 </div>
@@ -98,7 +98,7 @@ export default function GovernanceInsightsPage() {
         </div>
 
         {/* Column 2: Terminology Slip Leaderboard */}
-        <div className="p-6 rounded-[6px] bg-[#090909] border border-[#292929] space-y-4 shadow-technical">
+        <div className="glass-panel p-6 rounded-[12px] border border-white/12 space-y-4 shadow-xl">
           <div className="flex items-center space-x-2 text-white">
             <Hash className="w-4 h-4 text-white" />
             <h3 className="text-xs font-mono uppercase tracking-wider text-white font-bold">Vocabulary Slip Leaderboard</h3>
@@ -108,15 +108,15 @@ export default function GovernanceInsightsPage() {
           </p>
           <div className="space-y-2.5 pt-1">
             {insights.frequent_terminology_mistakes.map((t, i) => (
-              <div key={i} className="p-3 rounded-[4px] bg-[#111111] border border-[#292929] space-y-1">
+              <div key={i} className="glass-card p-3 rounded-[8px] border border-white/10 space-y-1">
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-mono text-white font-bold">&apos;{t.prohibited_term}&apos;</span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-[2px] bg-white text-black font-bold">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-[4px] bg-white text-black font-bold shadow-sm">
                     {t.occurrence_count} flagged
                   </span>
                 </div>
                 {t.replacement_suggestion && (
-                  <p className="text-[11px] text-[#A1A1A1] font-mono truncate">
+                  <p className="text-[11px] text-[#D4D4D4] font-mono truncate">
                     Replace: <span className="text-white font-semibold">{t.replacement_suggestion}</span>
                   </p>
                 )}
@@ -126,7 +126,7 @@ export default function GovernanceInsightsPage() {
         </div>
 
         {/* Column 3: Recurring Unverified Claims */}
-        <div className="p-6 rounded-[6px] bg-[#090909] border border-[#292929] space-y-4 shadow-technical">
+        <div className="glass-panel p-6 rounded-[12px] border border-white/12 space-y-4 shadow-xl">
           <div className="flex items-center space-x-2 text-white">
             <FileCheck className="w-4 h-4 text-white" />
             <h3 className="text-xs font-mono uppercase tracking-wider text-white font-bold">Recurring Unverified Claims</h3>
@@ -136,15 +136,15 @@ export default function GovernanceInsightsPage() {
           </p>
           <div className="space-y-2.5 pt-1">
             {insights.recurring_unverified_claims.map((c, i) => (
-              <div key={i} className="p-3 rounded-[4px] bg-[#111111] border border-[#292929] space-y-1">
+              <div key={i} className="glass-card p-3 rounded-[8px] border border-white/10 space-y-1">
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-semibold text-white truncate max-w-[170px]">&ldquo;{c.claim_text}&rdquo;</span>
-                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-[2px] bg-[#181818] text-[#D4D4D4] border border-[#292929] font-bold">
+                  <span className="glass-pill text-[10px] font-mono px-2 py-0.5 rounded-[4px] text-[#D4D4D4] font-bold">
                     {c.classification}
                   </span>
                 </div>
                 {c.suggested_fix && (
-                  <p className="text-[11px] text-[#777777] font-mono line-clamp-1">{c.suggested_fix}</p>
+                  <p className="text-[11px] text-[#A1A1A1] font-mono line-clamp-1">{c.suggested_fix}</p>
                 )}
               </div>
             ))}
@@ -154,18 +154,18 @@ export default function GovernanceInsightsPage() {
 
       {/* Category Breakdown & Adaptive Policy */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="p-6 rounded-[6px] bg-[#090909] border border-[#292929] space-y-4 shadow-technical">
+        <div className="glass-panel p-6 rounded-[12px] border border-white/12 space-y-4 shadow-xl">
           <h3 className="text-xs font-mono uppercase tracking-wider text-white font-bold">Issue Distribution by Governance Pillar</h3>
-          <div className="space-y-3">
+          <div className="space-y-3.5">
             {insights.category_breakdown.map((cat, i) => (
-              <div key={i} className="space-y-1">
+              <div key={i} className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs font-mono">
                   <span className="text-[#D4D4D4]">{cat.category_name}</span>
-                  <span className="text-[#777777]">{cat.total_issues} issues ({cat.percentage}%)</span>
+                  <span className="text-[#A1A1A1]">{cat.total_issues} issues ({cat.percentage}%)</span>
                 </div>
-                <div className="w-full h-1.5 rounded-full bg-[#181818] overflow-hidden">
+                <div className="w-full h-2 rounded-full glass-inner overflow-hidden border border-white/10">
                   <div
-                    className="h-full rounded-full bg-white"
+                    className="h-full rounded-full bg-white shadow-[0_0_8px_#ffffff]"
                     style={{ width: `${cat.percentage}%` }}
                   />
                 </div>
@@ -175,7 +175,7 @@ export default function GovernanceInsightsPage() {
         </div>
 
         {/* Adaptive Policy Recommendation Box */}
-        <div className="p-6 rounded-[6px] bg-[#090909] border border-[#292929] space-y-4 shadow-technical">
+        <div className="glass-card-elevated p-6 rounded-[12px] border border-white/18 space-y-4 shadow-xl">
           <div className="flex items-center space-x-2 text-white">
             <Sparkles className="w-4 h-4 text-white" />
             <h3 className="text-xs font-mono uppercase tracking-wider text-white font-bold">Adaptive Policy Recommendations</h3>
@@ -185,7 +185,7 @@ export default function GovernanceInsightsPage() {
           </p>
 
           <div className="space-y-3 text-xs">
-            <div className="p-3.5 rounded-[4px] bg-[#111111] border border-[#292929] flex items-start space-x-3">
+            <div className="glass-inner p-3.5 rounded-[8px] border border-white/10 flex items-start space-x-3">
               <CheckCircle2 className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-white block font-bold">Add Sub-second Latency SLA to Brand Facts</strong>
@@ -193,7 +193,7 @@ export default function GovernanceInsightsPage() {
               </div>
             </div>
 
-            <div className="p-3.5 rounded-[4px] bg-[#111111] border border-[#292929] flex items-start space-x-3">
+            <div className="glass-inner p-3.5 rounded-[8px] border border-white/10 flex items-start space-x-3">
               <CheckCircle2 className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-white block font-bold">Enforce &apos;Digital Asset Liquidity Unit&apos; Rule</strong>

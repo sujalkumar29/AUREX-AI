@@ -129,15 +129,17 @@ export default function HumanReviewStationPage() {
         <span className="text-white font-bold">Review Station</span>
       </div>
 
-      {/* Header */}
-      <div className="p-6 md:p-8 rounded-[6px] bg-[#090909] border border-[#292929] space-y-4 shadow-technical">
+      {/* Header - Glassmorphic Sovereign Banner */}
+      <div className="glass-card-elevated shimmer-sweep p-6 md:p-8 rounded-[14px] border border-white/18 space-y-4 shadow-2xl relative overflow-hidden backdrop-blur-2xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             <div className="flex items-center space-x-2">
-              <span className={`px-2.5 py-0.5 rounded-[2px] text-[10px] font-mono uppercase font-bold border ${getStatusColor(submission.status)}`}>
+              <span className={`px-2.5 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-bold border ${getStatusColor(submission.status)}`}>
                 CURRENT STATUS: {submission.status.replace('_', ' ')}
               </span>
-              <span className="text-xs font-mono text-[#A1A1A1]">v{submission.version}.0</span>
+              <span className="glass-pill text-xs font-mono text-[#D4D4D4] px-2 py-0.5 rounded-[4px]">
+                v{submission.version}.0
+              </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">{submission.title}</h1>
             <p className="text-xs font-mono text-[#A1A1A1]">
@@ -145,20 +147,20 @@ export default function HumanReviewStationPage() {
             </p>
           </div>
 
-          <div className="text-right">
-            <p className="text-[10px] uppercase font-mono text-[#777777]">Governance Trust Score</p>
-            <p className="text-3xl font-mono font-extrabold text-white">
+          <div className="glass-card p-4 rounded-[10px] border border-white/15 text-right shadow-xl">
+            <p className="text-[10px] uppercase font-mono text-[#A1A1A1] font-semibold">Governance Trust Score</p>
+            <p className="text-3xl font-mono font-extrabold text-white tracking-tight">
               {passport.governance_score.toFixed(1)} <span className="text-xs text-[#777777] font-normal">/ 100</span>
             </p>
           </div>
         </div>
 
         {/* Tab switcher */}
-        <div className="flex border-b border-[#292929] space-x-6 pt-4 text-xs font-mono">
+        <div className="glass-pill p-1.5 rounded-[8px] flex space-x-2 pt-1 text-xs font-mono border border-white/10 w-fit">
           <button
             onClick={() => setActiveTab("decision")}
-            className={`pb-2.5 flex items-center space-x-2 border-b-2 transition-colors uppercase tracking-wider ${
-              activeTab === "decision" ? "border-white text-white font-bold" : "border-transparent text-[#777777] hover:text-white"
+            className={`py-2 px-3.5 rounded-[6px] flex items-center space-x-2 transition-all uppercase tracking-wider ${
+              activeTab === "decision" ? "bg-white text-black font-bold shadow-sm" : "text-[#A1A1A1] hover:text-white"
             }`}
           >
             <ShieldCheck className="w-4 h-4" />
@@ -166,8 +168,8 @@ export default function HumanReviewStationPage() {
           </button>
           <button
             onClick={() => setActiveTab("discussion")}
-            className={`pb-2.5 flex items-center space-x-2 border-b-2 transition-colors uppercase tracking-wider ${
-              activeTab === "discussion" ? "border-white text-white font-bold" : "border-transparent text-[#777777] hover:text-white"
+            className={`py-2 px-3.5 rounded-[6px] flex items-center space-x-2 transition-all uppercase tracking-wider ${
+              activeTab === "discussion" ? "bg-white text-black font-bold shadow-sm" : "text-[#A1A1A1] hover:text-white"
             }`}
           >
             <MessageSquare className="w-4 h-4" />
@@ -175,8 +177,8 @@ export default function HumanReviewStationPage() {
           </button>
           <button
             onClick={() => setActiveTab("history")}
-            className={`pb-2.5 flex items-center space-x-2 border-b-2 transition-colors uppercase tracking-wider ${
-              activeTab === "history" ? "border-white text-white font-bold" : "border-transparent text-[#777777] hover:text-white"
+            className={`py-2 px-3.5 rounded-[6px] flex items-center space-x-2 transition-all uppercase tracking-wider ${
+              activeTab === "history" ? "bg-white text-black font-bold shadow-sm" : "text-[#A1A1A1] hover:text-white"
             }`}
           >
             <History className="w-4 h-4" />
@@ -190,9 +192,9 @@ export default function HumanReviewStationPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
             {/* Content Preview */}
-            <div className="p-6 rounded-[6px] bg-[#090909] border border-[#292929] space-y-3 shadow-technical">
+            <div className="glass-panel p-6 rounded-[12px] border border-white/12 space-y-3 shadow-xl">
               <h3 className="text-xs font-mono uppercase tracking-wider text-white">Submitted Copy Draft</h3>
-              <div className="p-4 rounded-[4px] bg-[#111111] border border-[#292929] text-xs text-[#D4D4D4] font-mono leading-relaxed whitespace-pre-wrap">
+              <div className="glass-inner p-4 rounded-[8px] border border-white/10 text-xs text-[#D4D4D4] font-mono leading-relaxed whitespace-pre-wrap">
                 {submission.raw_text}
               </div>
             </div>
@@ -201,26 +203,26 @@ export default function HumanReviewStationPage() {
             <div className="space-y-3">
               <h3 className="text-xs font-mono uppercase tracking-wider text-[#A1A1A1]">Review History & Decisions</h3>
               {reviews.length === 0 ? (
-                <div className="p-4 rounded-[4px] bg-[#090909] border border-[#292929] text-xs text-[#777777] font-mono">
+                <div className="glass-panel p-4 rounded-[8px] border border-white/10 text-xs text-[#777777] font-mono">
                   No official reviewer determinations recorded yet.
                 </div>
               ) : (
                 reviews.map((r) => (
-                  <div key={r.id} className="p-4 rounded-[4px] bg-[#090909] border border-[#292929] space-y-2">
+                  <div key={r.id} className="glass-card p-4 rounded-[8px] border border-white/10 space-y-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <span className={`px-2 py-0.5 rounded-[2px] text-[10px] font-mono font-bold uppercase ${
+                        <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono font-bold uppercase ${
                           r.action === "approve" 
-                            ? "bg-white text-black" 
+                            ? "bg-white text-black shadow-sm" 
                             : r.action === "request_changes" 
-                            ? "bg-[#181818] border border-[#292929] text-white" 
-                            : "bg-[#181818] border-2 border-[#D4D4D4] text-white"
+                            ? "glass-pill text-white" 
+                            : "bg-[#181818] border border-[#D4D4D4] text-white"
                         }`}>
                           {r.action.replace('_', ' ')}
                         </span>
                         <span className="text-xs font-bold text-white">by {r.reviewer_name}</span>
                       </div>
-                      <span className="text-[11px] text-[#777777] font-mono">{formatDate(r.created_at)}</span>
+                      <span className="text-[11px] text-[#A1A1A1] font-mono">{formatDate(r.created_at)}</span>
                     </div>
                     {r.notes && (
                       <p className="text-xs text-[#D4D4D4] leading-relaxed font-sans italic">&ldquo;{r.notes}&rdquo;</p>
@@ -232,9 +234,9 @@ export default function HumanReviewStationPage() {
           </div>
 
           {/* Action Station Panel */}
-          <div className="p-6 rounded-[6px] bg-[#090909] border border-[#292929] space-y-5 h-fit shadow-technical">
+          <div className="glass-card-elevated p-6 rounded-[14px] border border-white/18 space-y-5 h-fit shadow-2xl backdrop-blur-2xl">
             <div className="space-y-1">
-              <div className="text-[10px] font-mono uppercase text-[#A1A1A1] tracking-wider">Final Authority</div>
+              <div className="text-[10px] font-mono uppercase text-[#A1A1A1] tracking-wider font-semibold">Final Authority</div>
               <h3 className="text-base font-extrabold text-white">Human Sovereign Sign-off</h3>
               <p className="text-xs text-[#A1A1A1] leading-relaxed font-normal">
                 As a designated brand reviewer, your determination dictates whether this asset is released to market.
@@ -250,19 +252,19 @@ export default function HumanReviewStationPage() {
                 placeholder="Specify requirements or reason for approval/changes..."
                 value={reviewNotes}
                 onChange={(e) => setReviewNotes(e.target.value)}
-                className="w-full rounded-[4px] bg-[#111111] border border-[#292929] p-3 text-xs text-white placeholder-[#777777] focus:outline-none focus:border-white font-mono transition-colors"
+                className="glass-input w-full rounded-[6px] p-3 text-xs placeholder-[#777777] font-mono"
               />
             </div>
 
             {actionSuccess && (
-              <div className="p-3 rounded-[4px] bg-[#111111] border border-white text-white text-xs font-mono flex items-center space-x-2">
+              <div className="glass-card p-3 rounded-[6px] border border-white/30 text-white text-xs font-mono flex items-center space-x-2 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                 <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-white" />
                 <span>{actionSuccess}</span>
               </div>
             )}
 
             {actionError && (
-              <div className="p-3 rounded-[4px] bg-[#181818] border-2 border-[#D4D4D4] text-white text-xs font-mono flex items-center space-x-2">
+              <div className="glass-card p-3 rounded-[6px] border-2 border-[#D4D4D4] text-white text-xs font-mono flex items-center space-x-2">
                 <AlertTriangle className="w-4 h-4 flex-shrink-0 text-white" />
                 <span>{actionError}</span>
               </div>
@@ -272,7 +274,7 @@ export default function HumanReviewStationPage() {
               <button
                 onClick={() => handleReviewAction("approve")}
                 disabled={actionLoading}
-                className="w-full py-3 px-4 rounded-[4px] bg-white hover:bg-[#D4D4D4] text-black font-mono text-xs font-bold uppercase tracking-wider shadow-technical flex items-center justify-center space-x-2 transition-all disabled:opacity-50"
+                className="w-full py-3 px-4 rounded-[6px] bg-white hover:bg-[#D4D4D4] text-black font-mono text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_28px_rgba(255,255,255,0.35)] flex items-center justify-center space-x-2 transition-all disabled:opacity-50"
               >
                 <CheckCircle2 className="w-4 h-4 text-black" />
                 <span>Approve Publication</span>
@@ -281,7 +283,7 @@ export default function HumanReviewStationPage() {
               <button
                 onClick={() => handleReviewAction("request_changes")}
                 disabled={actionLoading}
-                className="w-full py-3 px-4 rounded-[4px] bg-[#111111] hover:bg-[#181818] border border-[#292929] text-white font-mono text-xs font-bold uppercase tracking-wider shadow-technical flex items-center justify-center space-x-2 transition-all disabled:opacity-50"
+                className="glass-button w-full py-3 px-4 rounded-[6px] font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 transition-all disabled:opacity-50"
               >
                 <AlertTriangle className="w-4 h-4 text-white" />
                 <span>Request Revisions</span>
@@ -290,14 +292,14 @@ export default function HumanReviewStationPage() {
               <button
                 onClick={() => handleReviewAction("reject")}
                 disabled={actionLoading}
-                className="w-full py-3 px-4 rounded-[4px] bg-[#181818] hover:bg-[#222222] border-2 border-[#D4D4D4] text-white font-mono text-xs font-bold uppercase tracking-wider shadow-technical flex items-center justify-center space-x-2 transition-all disabled:opacity-50"
+                className="glass-card w-full py-3 px-4 rounded-[6px] border-2 border-[#D4D4D4] hover:bg-white/10 text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 transition-all disabled:opacity-50"
               >
                 <XCircle className="w-4 h-4 text-white" />
                 <span>Reject Submission</span>
               </button>
             </div>
 
-            <p className="text-[10px] text-[#777777] text-center font-mono pt-2 border-t border-[#292929]">
+            <p className="text-[10px] text-[#777777] text-center font-mono pt-2 border-t border-white/10">
               Decisions are permanently logged with SHA-256 HMAC stamps.
             </p>
           </div>
@@ -307,9 +309,9 @@ export default function HumanReviewStationPage() {
       {/* Tab 2: Discussion */}
       {activeTab === "discussion" && (
         <div className="max-w-3xl mx-auto space-y-6">
-          <div className="p-6 rounded-[6px] bg-[#090909] border border-[#292929] space-y-4 shadow-technical">
+          <div className="glass-panel p-6 rounded-[12px] border border-white/12 space-y-4 shadow-xl">
             <h3 className="text-sm font-extrabold text-white">Collaborative Review Discussion</h3>
-            <div className="space-y-3 divide-y divide-[#292929]">
+            <div className="space-y-3 divide-y divide-white/5">
               {comments.length === 0 ? (
                 <p className="text-xs text-[#777777] py-4 font-mono">No comments yet. Start the thread below.</p>
               ) : (
@@ -325,17 +327,17 @@ export default function HumanReviewStationPage() {
               )}
             </div>
 
-            <form onSubmit={handleAddComment} className="pt-4 border-t border-[#292929] flex gap-2">
+            <form onSubmit={handleAddComment} className="pt-4 border-t border-white/10 flex gap-2">
               <input
                 type="text"
                 placeholder="Add review feedback or note..."
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                className="flex-1 rounded-[4px] bg-[#111111] border border-[#292929] px-3.5 py-2 text-xs text-white placeholder-[#777777] focus:outline-none focus:border-white font-mono transition-colors"
+                className="glass-input flex-1 rounded-[6px] px-3.5 py-2 text-xs font-mono"
               />
               <button
                 type="submit"
-                className="px-4 py-2 rounded-[4px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider transition-colors flex items-center space-x-1 font-mono shadow-technical"
+                className="px-4 py-2 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider transition-all flex items-center space-x-1 font-mono shadow-[0_0_15px_rgba(255,255,255,0.2)]"
               >
                 <Send className="w-3.5 h-3.5 text-black" />
                 <span>Post</span>
@@ -350,20 +352,20 @@ export default function HumanReviewStationPage() {
         <div className="max-w-3xl mx-auto space-y-4">
           <h3 className="text-sm font-extrabold text-white">Revision Diffs & Version History</h3>
           {revisions.length === 0 ? (
-            <div className="p-6 rounded-[4px] bg-[#090909] border border-[#292929] text-xs text-[#777777] text-center font-mono">
+            <div className="glass-panel p-6 rounded-[8px] border border-white/10 text-xs text-[#777777] text-center font-mono">
               This is version 1.0. No previous revisions logged yet.
             </div>
           ) : (
             revisions.map((rev) => (
-              <div key={rev.id} className="p-5 rounded-[4px] bg-[#090909] border border-[#292929] space-y-3 shadow-technical">
+              <div key={rev.id} className="glass-card p-5 rounded-[10px] border border-white/12 space-y-3 shadow-lg">
                 <div className="flex items-center justify-between text-xs font-mono">
                   <span className="font-bold text-white">Version {rev.version}.0 Snapshot</span>
-                  <span className="text-[#777777]">{formatDate(rev.created_at)}</span>
+                  <span className="text-[#A1A1A1]">{formatDate(rev.created_at)}</span>
                 </div>
                 {rev.summary_of_changes && (
                   <p className="text-xs text-[#D4D4D4] italic font-mono">{rev.summary_of_changes}</p>
                 )}
-                <div className="p-3.5 rounded-[4px] bg-[#111111] border border-[#292929] text-xs font-mono text-[#D4D4D4] max-h-36 overflow-y-auto whitespace-pre-wrap leading-relaxed">
+                <div className="glass-inner p-3.5 rounded-[8px] border border-white/10 text-xs font-mono text-[#D4D4D4] max-h-36 overflow-y-auto whitespace-pre-wrap leading-relaxed">
                   {rev.raw_text}
                 </div>
               </div>

@@ -111,16 +111,18 @@ def get_governance_insights(
         day_scores = [a.overall_score for a in day_analyses]
         day_avg = round(sum(day_scores) / len(day_scores), 1) if day_scores else avg_score
         day_approved = sum(1 for s in day_subs if s.status == "approved")
+        day_changes = sum(1 for s in day_subs if s.status == "changes_required")
 
         timeline.append(ComplianceTrendPoint(
             date=day_str,
             average_score=day_avg,
             total_submissions=len(day_subs),
-            approved_count=day_approved
+            approved_count=day_approved,
+            changes_required_count=day_changes
         ))
 
     return GovernanceInsightsResponse(
-        total_evaluations=total_submissions,
+        total_submissions=total_submissions,
         overall_compliance_rate=avg_score,
         approved_percentage=approved_pct,
         top_violations=top_violations,
@@ -128,5 +130,6 @@ def get_governance_insights(
         recurring_unverified_claims=recurring_claims,
         compliance_timeline=timeline,
         category_breakdown=category_breakdown,
-        avg_governance_score=avg_score
+        avg_governance_score=avg_score,
+        recent_governance_actions=[]
     )

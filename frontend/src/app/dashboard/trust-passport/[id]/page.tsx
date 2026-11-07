@@ -99,20 +99,20 @@ export default function TrustPassportDetailPage() {
           </Link>
           <ChevronRight className="w-3.5 h-3.5" />
           <span className="text-white font-bold">Trust Passport</span>
-          <span className="text-[#777777]">[{passport.submission_id.substring(0, 8)}]</span>
+          <span className="text-[#A1A1A1]">[{passport.submission_id.substring(0, 8)}]</span>
         </div>
 
         <div className="flex items-center space-x-3">
           <Link
             href={`/dashboard/review/${passport.submission_id}`}
-            className="px-4 py-2 rounded-[4px] bg-[#111111] hover:bg-white hover:text-black border border-[#292929] text-white text-xs font-bold font-mono transition-colors flex items-center space-x-2 shadow-technical"
+            className="glass-button px-4 py-2 rounded-[6px] text-white text-xs font-bold font-mono transition-all flex items-center space-x-2 shadow-lg"
           >
-            <User className="w-3.5 h-3.5" />
+            <User className="w-3.5 h-3.5 text-white" />
             <span>Review & Approve</span>
           </Link>
           <button
             onClick={handlePdfDownload}
-            className="px-4 py-2 rounded-[4px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider transition-colors shadow-technical flex items-center space-x-2 font-mono"
+            className="px-4 py-2 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_28px_rgba(255,255,255,0.35)] flex items-center space-x-2 font-mono"
           >
             <Download className="w-3.5 h-3.5 text-black" />
             <span>Export Official PDF</span>
@@ -120,18 +120,18 @@ export default function TrustPassportDetailPage() {
         </div>
       </div>
 
-      {/* Main Passport Header Card */}
-      <div className="p-6 md:p-8 rounded-[6px] bg-[#090909] border border-[#292929] shadow-technical relative overflow-hidden">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-[#292929]">
+      {/* Main Passport Header Card - Floating Glassmorphic Certificate */}
+      <div className="glass-card-elevated shimmer-sweep p-6 md:p-8 rounded-[14px] border border-white/20 shadow-2xl relative overflow-hidden backdrop-blur-2xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2.5">
-              <span className={`px-2.5 py-0.5 rounded-[2px] text-xs font-mono uppercase font-bold border ${getStatusColor(passport.overall_status)}`}>
+              <span className={`px-2.5 py-0.5 rounded-[4px] text-xs font-mono uppercase font-bold border ${getStatusColor(passport.overall_status)}`}>
                 GOVERNANCE STATUS: {passport.overall_status.replace('_', ' ')}
               </span>
-              <span className="text-[11px] font-mono text-[#A1A1A1] px-2 py-0.5 rounded-[2px] bg-[#111111] border border-[#292929]">
+              <span className="glass-pill text-[11px] font-mono text-[#D4D4D4] px-2 py-0.5 rounded-[4px]">
                 v{passport.version}.0
               </span>
-              <span className="text-[11px] font-mono text-white px-2 py-0.5 rounded-[2px] bg-[#181818] border border-[#292929]">
+              <span className="glass-pill text-[11px] font-mono text-white px-2 py-0.5 rounded-[4px]">
                 MODE: {passport.execution_mode.replace('_', ' ').toUpperCase()}
               </span>
             </div>
@@ -150,58 +150,60 @@ export default function TrustPassportDetailPage() {
           </div>
 
           {/* Governance Score Badge */}
-          <div className="flex items-center space-x-4 bg-[#111111] p-4 rounded-[4px] border border-[#292929]">
+          <div className="glass-card flex items-center space-x-4 p-4 rounded-[10px] border border-white/15 shadow-xl">
             <div className="text-right">
-              <p className="text-[10px] uppercase font-mono tracking-wider text-[#777777]">
+              <p className="text-[10px] uppercase font-mono tracking-wider text-[#A1A1A1] font-semibold">
                 Governance Index
               </p>
-              <p className="text-4xl font-mono font-extrabold text-white">
+              <p className="text-4xl font-mono font-extrabold text-white tracking-tight">
                 {passport.governance_score.toFixed(1)}
                 <span className="text-xs text-[#777777] font-normal"> / 100</span>
               </p>
             </div>
-            <div className="w-12 h-12 rounded-[4px] bg-[#181818] border border-[#292929] text-white flex items-center justify-center">
+            <div className="w-12 h-12 rounded-[8px] bg-white/10 border border-white/20 text-white flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.15)]">
               <ShieldCheck className="w-6 h-6 text-white" />
             </div>
           </div>
         </div>
 
         {/* 4 Pillars Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-6">
-          <div className="p-3.5 rounded-[4px] bg-[#111111] border border-[#292929] space-y-1">
-            <span className="text-[10px] font-mono uppercase text-[#777777]">Brand Voice</span>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 pt-6">
+          <div className="glass-card p-3.5 rounded-[8px] space-y-1">
+            <span className="text-[10px] font-mono uppercase text-[#A1A1A1]">Brand Voice</span>
             <p className="text-xl font-bold font-mono text-white">{passport.brand_voice_score}%</p>
-            <p className="text-[11px] text-[#A1A1A1]">Tone & personality</p>
+            <p className="text-[11px] text-[#777777]">Tone & personality</p>
           </div>
-          <div className="p-3.5 rounded-[4px] bg-[#111111] border border-[#292929] space-y-1">
-            <span className="text-[10px] font-mono uppercase text-[#777777]">Terminology</span>
+          <div className="glass-card p-3.5 rounded-[8px] space-y-1">
+            <span className="text-[10px] font-mono uppercase text-[#A1A1A1]">Terminology</span>
             <p className="text-xl font-bold font-mono text-white">{passport.terminology_score}%</p>
-            <p className="text-[11px] text-[#A1A1A1]">Approved vocabulary</p>
+            <p className="text-[11px] text-[#777777]">Approved vocabulary</p>
           </div>
-          <div className="p-3.5 rounded-[4px] bg-[#111111] border border-[#292929] space-y-1">
-            <span className="text-[10px] font-mono uppercase text-[#777777]">Claim Integrity</span>
+          <div className="glass-card p-3.5 rounded-[8px] space-y-1">
+            <span className="text-[10px] font-mono uppercase text-[#A1A1A1]">Claim Integrity</span>
             <p className="text-xl font-bold font-mono text-white">{passport.claim_integrity_score}%</p>
-            <p className="text-[11px] text-[#A1A1A1]">Grounding & facts</p>
+            <p className="text-[11px] text-[#777777]">Grounding & facts</p>
           </div>
-          <div className="p-3.5 rounded-[4px] bg-[#111111] border border-[#292929] space-y-1">
-            <span className="text-[10px] font-mono uppercase text-[#777777]">Visual Standards</span>
+          <div className="glass-card p-3.5 rounded-[8px] space-y-1">
+            <span className="text-[10px] font-mono uppercase text-[#A1A1A1]">Visual Standards</span>
             <p className="text-xl font-bold font-mono text-white">{passport.visual_compliance_score}%</p>
-            <p className="text-[11px] text-[#A1A1A1]">Palette & contrast</p>
+            <p className="text-[11px] text-[#777777]">Palette & contrast</p>
           </div>
         </div>
       </div>
 
       {/* Evaluated Copy Viewer */}
       {passport.raw_text && (
-        <div className="p-6 rounded-[6px] bg-[#090909] border border-[#292929] space-y-3 shadow-technical">
+        <div className="glass-panel p-6 rounded-[12px] border border-white/12 space-y-3 shadow-xl">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-mono uppercase tracking-wider text-white flex items-center space-x-2">
               <FileText className="w-3.5 h-3.5 text-white" />
               <span>Evaluated Content Draft</span>
             </h3>
-            <span className="text-[11px] text-[#777777] font-mono">VERSION: {passport.version}.0</span>
+            <span className="glass-pill text-[11px] text-[#A1A1A1] font-mono px-2 py-0.5 rounded-[4px]">
+              VERSION: {passport.version}.0
+            </span>
           </div>
-          <div className="p-4 rounded-[4px] bg-[#111111] border border-[#292929] text-xs text-[#D4D4D4] font-mono leading-relaxed whitespace-pre-wrap">
+          <div className="glass-inner p-4 rounded-[8px] border border-white/10 text-xs text-[#D4D4D4] font-mono leading-relaxed whitespace-pre-wrap">
             {passport.raw_text}
           </div>
         </div>
@@ -219,13 +221,13 @@ export default function TrustPassportDetailPage() {
             </p>
           </div>
           <div className="flex items-center space-x-2 text-xs font-mono">
-            <span className="px-2.5 py-0.5 rounded-[2px] bg-white text-black font-bold">
+            <span className="px-2.5 py-1 rounded-[4px] bg-white text-black font-bold shadow-sm">
               {passport.supported_claims} Supported
             </span>
-            <span className="px-2.5 py-0.5 rounded-[2px] bg-[#181818] border-2 border-[#D4D4D4] text-white font-bold">
+            <span className="px-2.5 py-1 rounded-[4px] bg-[#181818] border-2 border-[#D4D4D4] text-white font-bold">
               {passport.conflicting_claims} Conflicting
             </span>
-            <span className="px-2.5 py-0.5 rounded-[2px] bg-[#111111] text-[#A1A1A1] border border-[#292929]">
+            <span className="glass-pill px-2.5 py-1 rounded-[4px] text-[#A1A1A1]">
               {passport.unverified_claims} Unverified
             </span>
           </div>
@@ -233,7 +235,7 @@ export default function TrustPassportDetailPage() {
 
         <div className="grid grid-cols-1 gap-3">
           {passport.claims_matrix.length === 0 ? (
-            <div className="p-6 rounded-[4px] bg-[#090909] border border-[#292929] text-center text-xs text-[#777777] font-mono">
+            <div className="glass-panel p-6 rounded-[8px] border border-white/10 text-center text-xs text-[#777777] font-mono">
               No quantitative or superlative claims detected in this copy.
             </div>
           ) : (
@@ -243,22 +245,22 @@ export default function TrustPassportDetailPage() {
               return (
                 <div
                   key={idx}
-                  className={`p-4 rounded-[4px] border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-colors ${
+                  className={`glass-card p-4 rounded-[10px] border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all ${
                     isSupported
-                      ? "bg-[#090909] border-white/60"
+                      ? "border-white/40 shadow-[0_4px_20px_rgba(255,255,255,0.06)]"
                       : isConflicting
-                      ? "bg-[#090909] border-[#D4D4D4]"
-                      : "bg-[#090909] border-[#292929]"
+                      ? "border-2 border-[#D4D4D4]"
+                      : "border-white/12"
                   }`}
                 >
                   <div className="space-y-1.5 flex-1">
                     <div className="flex items-center space-x-2">
-                      <span className={`px-2 py-0.5 rounded-[2px] text-[10px] font-mono font-bold uppercase ${
+                      <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono font-bold uppercase ${
                         isSupported
-                          ? "bg-white text-black"
+                          ? "bg-white text-black shadow-sm"
                           : isConflicting
-                          ? "bg-[#181818] border border-[#292929] text-white"
-                          : "bg-[#111111] text-[#A1A1A1] border border-[#292929]"
+                          ? "bg-[#181818] border border-white/20 text-white"
+                          : "glass-pill text-[#A1A1A1]"
                       }`}>
                         {c.classification}
                       </span>
@@ -275,7 +277,7 @@ export default function TrustPassportDetailPage() {
 
                   {c.suggested_correction && (
                     <div className="text-right flex flex-col items-end space-y-1">
-                      <span className="text-[11px] text-[#D4D4D4] bg-[#111111] px-3 py-1.5 rounded-[2px] border border-[#292929] max-w-xs text-left font-mono">
+                      <span className="glass-inner text-[11px] text-[#D4D4D4] px-3 py-1.5 rounded-[6px] border border-white/10 max-w-xs text-left font-mono">
                         {c.suggested_correction}
                       </span>
                     </div>
@@ -298,26 +300,26 @@ export default function TrustPassportDetailPage() {
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {passport.findings.map((finding) => {
             const isApplied = appliedFixes[finding.id];
             return (
               <div
                 key={finding.id}
-                className="p-5 rounded-[4px] bg-[#090909] border border-[#292929] space-y-3 hover:border-white/50 transition-all shadow-technical"
+                className="glass-card p-5 rounded-[12px] border border-white/12 space-y-3.5 hover:border-white/35 transition-all shadow-xl"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div className="flex items-center space-x-2">
-                    <span className={`px-2 py-0.5 rounded-[2px] text-[10px] font-mono uppercase font-bold ${
+                    <span className={`px-2 py-0.5 rounded-[4px] text-[10px] font-mono uppercase font-bold ${
                       finding.severity === "critical"
-                        ? "bg-[#181818] border border-[#292929] text-white"
+                        ? "bg-[#181818] border border-white/30 text-white"
                         : finding.severity === "warning"
-                        ? "bg-[#111111] border border-[#292929] text-white"
-                        : "bg-[#111111] text-[#A1A1A1] border border-[#292929]"
+                        ? "bg-white/10 border border-white/20 text-white"
+                        : "glass-pill text-[#A1A1A1]"
                     }`}>
                       {finding.severity}
                     </span>
-                    <span className="text-xs uppercase font-mono text-[#777777]">
+                    <span className="text-xs uppercase font-mono text-[#A1A1A1]">
                       {finding.category.replace('_', ' ')}
                     </span>
                     <span className="text-xs font-semibold text-white">
@@ -333,7 +335,7 @@ export default function TrustPassportDetailPage() {
                   )}
                 </div>
 
-                <div className="p-3 rounded-[4px] bg-[#111111] border border-[#292929] space-y-1">
+                <div className="glass-inner p-3 rounded-[6px] border border-white/10 space-y-1">
                   <span className="text-[10px] uppercase font-mono text-[#777777]">Flagged Passage:</span>
                   <p className="text-xs text-white font-mono border-l-2 border-white pl-2">&ldquo;{finding.detected_text}&rdquo;</p>
                 </div>
@@ -343,7 +345,7 @@ export default function TrustPassportDetailPage() {
                 </p>
 
                 {finding.suggested_correction && (
-                  <div className="p-3 rounded-[4px] bg-[#111111] border border-[#292929] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div className="glass-inner p-3 rounded-[8px] border border-white/12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                     <div className="text-xs">
                       <span className="font-bold text-white font-mono">Suggested Phrasing: </span>
                       <span className="text-[#D4D4D4] font-mono">{finding.suggested_correction}</span>
@@ -352,10 +354,10 @@ export default function TrustPassportDetailPage() {
                     <button
                       onClick={() => handleApplyFix(finding)}
                       disabled={isApplied || isRevising}
-                      className={`px-3 py-1.5 rounded-[2px] text-xs font-bold font-mono uppercase tracking-wider flex items-center space-x-1.5 transition-all whitespace-nowrap shadow-technical ${
+                      className={`px-3.5 py-1.5 rounded-[6px] text-xs font-bold font-mono uppercase tracking-wider flex items-center space-x-1.5 transition-all whitespace-nowrap shadow-md ${
                         isApplied
-                          ? "bg-[#181818] border border-white text-white"
-                          : "bg-white text-black hover:bg-[#D4D4D4]"
+                          ? "bg-white/15 border border-white/40 text-white"
+                          : "bg-white text-black hover:bg-[#D4D4D4] shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                       }`}
                     >
                       {isApplied ? (
@@ -379,7 +381,7 @@ export default function TrustPassportDetailPage() {
       </div>
 
       {/* Legal & Governance Disclaimer */}
-      <div className="p-4 rounded-[4px] bg-[#090909] border border-[#292929] flex items-start space-x-3 text-xs text-[#A1A1A1]">
+      <div className="glass-inner p-4 rounded-[10px] border border-white/10 flex items-start space-x-3 text-xs text-[#A1A1A1]">
         <Info className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
         <div className="space-y-0.5">
           <p className="font-bold text-white font-mono uppercase text-[10px]">Governance Policy Disclaimer</p>
