@@ -3,173 +3,211 @@
 @tailwind utilities;
 
 :root {
-  --background: #000000;
-  --foreground: #FFFFFF;
+  --background: #F7F8FF;
+  --foreground: #17143A;
+  --primary: #0D0B2D;
+  --accent: #5B4BFF;
+  --secondary: #A78BFA;
+  --surface: #E6E0FF;
+  --border: #E5E1F2;
 }
 
 body {
-  background-color: #000000;
-  color: #F5F5F5;
+  background-color: #F7F8FF;
+  color: #17143A;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
-  selection-background-color: #FFFFFF;
-  selection-color: #000000;
+  selection-background-color: #5B4BFF;
+  selection-color: #FFFFFF;
 }
 
 ::selection {
-  background-color: #FFFFFF;
-  color: #000000;
+  background-color: #5B4BFF;
+  color: #FFFFFF;
 }
 
-/* Monochromatic Technical Scrollbars */
+/* Lavender Scrollbars */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.9);
+  background: #F0EDFF;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 3px;
+  background: #A78BFA;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: #5B4BFF;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   GLASSMORPHISM DESIGN SYSTEM (LEVELS 1-5)
+   AUREX AI LAVENDER + PURPLE GLASSMORPHISM SYSTEM
 ────────────────────────────────────────────────────────────── */
 
 /* Level 1: Standard Glass Container / Panel */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(229, 225, 242, 0.9);
   box-shadow: 
-    0 10px 32px 0 rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+    0 10px 32px 0 rgba(91, 75, 255, 0.05),
+    0 1px 2px 0 rgba(13, 11, 45, 0.02),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
 }
 
-/* Level 2: Interactive Glass Card with Hover Elevation & Glow */
+/* Level 2: Interactive Glass Card with Hover Elevation & Purple Glow */
 .glass-card {
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(229, 225, 242, 0.9);
   box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 8px 30px 0 rgba(91, 75, 255, 0.06),
+    0 1px 3px 0 rgba(13, 11, 45, 0.02),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.085);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(91, 75, 255, 0.35);
   transform: translateY(-2px);
   box-shadow: 
-    0 16px 44px 0 rgba(0, 0, 0, 0.6),
-    0 0 24px 0 rgba(255, 255, 255, 0.08),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+    0 16px 40px 0 rgba(91, 75, 255, 0.12),
+    0 0 24px 0 rgba(167, 139, 250, 0.18),
+    inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
 /* Level 3: Elevated Glass / Featured Widgets / Inspector Core */
 .glass-card-elevated {
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(91, 75, 255, 0.20);
   box-shadow: 
-    0 18px 50px -8px rgba(0, 0, 0, 0.7),
-    0 0 32px -4px rgba(255, 255, 255, 0.06),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+    0 18px 48px -8px rgba(91, 75, 255, 0.12),
+    0 4px 16px 0 rgba(13, 11, 45, 0.03),
+    inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
 /* Level 4: Recessed Inner Slot for Copy, Code, and Findings */
 .glass-inner {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(240, 237, 255, 0.65);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(229, 225, 242, 0.85);
   box-shadow: 
-    inset 0 2px 6px 0 rgba(0, 0, 0, 0.6),
-    0 1px 0 0 rgba(255, 255, 255, 0.04);
+    inset 0 2px 4px 0 rgba(13, 11, 45, 0.03),
+    0 1px 0 0 rgba(255, 255, 255, 0.8);
 }
 
 /* Level 5: Glass Nav / Header */
 .glass-nav {
-  background: rgba(8, 8, 8, 0.85);
+  background: rgba(255, 255, 255, 0.80);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(229, 225, 242, 0.85);
   box-shadow: 
-    0 4px 24px 0 rgba(0, 0, 0, 0.5),
-    inset 0 -1px 0 0 rgba(255, 255, 255, 0.04);
+    0 4px 24px 0 rgba(91, 75, 255, 0.05),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.7);
 }
 
 /* Modal Dialogs */
 .glass-modal {
-  background: rgba(16, 16, 16, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(91, 75, 255, 0.25);
   box-shadow: 
-    0 24px 70px 0 rgba(0, 0, 0, 0.85),
-    0 0 40px 0 rgba(255, 255, 255, 0.08),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.20);
+    0 24px 70px 0 rgba(13, 11, 45, 0.15),
+    0 0 32px 0 rgba(91, 75, 255, 0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
 /* Translucent Glass Inputs */
 .glass-input {
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #FFFFFF;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  border: 1px solid #E5E1F2;
+  color: #17143A;
+  box-shadow: inset 0 1px 2px rgba(13, 11, 45, 0.03);
   transition: all 0.2s ease-in-out;
 }
 
 .glass-input:focus {
-  background: rgba(255, 255, 255, 0.065);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: #FFFFFF;
+  border-color: #5B4BFF;
   outline: none;
   box-shadow: 
-    0 0 16px 0 rgba(255, 255, 255, 0.1),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+    0 0 0 3px rgba(91, 75, 255, 0.15),
+    0 1px 2px rgba(13, 11, 45, 0.05);
 }
 
 /* Translucent Secondary Glass Buttons */
 .glass-button {
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(240, 237, 255, 0.7);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  color: #FFFFFF;
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border: 1px solid #E5E1F2;
+  color: #17143A;
+  box-shadow: 0 2px 6px rgba(13, 11, 45, 0.03);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-button:hover {
-  background: rgba(255, 255, 255, 0.085);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: #FFFFFF;
+  border-color: #5B4BFF;
+  color: #5B4BFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(91, 75, 255, 0.12);
+}
+
+/* Primary Purple Action Buttons */
+.glass-button-primary {
+  background: #5B4BFF;
+  color: #FFFFFF;
+  border: 1px solid #5B4BFF;
+  box-shadow: 
+    0 4px 16px rgba(91, 75, 255, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-button-primary:hover {
+  background: #4A3AE8;
   transform: translateY(-1px);
   box-shadow: 
-    0 6px 18px rgba(0, 0, 0, 0.4),
-    0 0 16px rgba(255, 255, 255, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 8px 24px rgba(91, 75, 255, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Glass Pills & Badges */
 .glass-pill {
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(240, 237, 255, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border: 1px solid #E5E1F2;
+  color: #17143A;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Gradients */
+.gradient-purple {
+  background: linear-gradient(135deg, #5B4BFF, #A78BFA);
+}
+
+.gradient-dark {
+  background: linear-gradient(135deg, #0D0B2D, #29205C);
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #0D0B2D 20%, #5B4BFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -178,28 +216,28 @@ body {
 
 /* Ambient Radial Glow */
 .glow-ambient {
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 255, 255, 0.07) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(91, 75, 255, 0.12) 0%, rgba(167, 139, 250, 0.06) 40%, transparent 70%);
 }
 
 .glow-ambient-center {
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+  background: radial-gradient(circle at 50% 50%, rgba(91, 75, 255, 0.08) 0%, transparent 60%);
 }
 
 .glow-ambient-bottom {
-  background: radial-gradient(ellipse 70% 40% at 50% 120%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 40% at 50% 110%, rgba(91, 75, 255, 0.10) 0%, transparent 70%);
 }
 
 /* Crisp Technical Hairline Grid Patterns */
 .bg-tech-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(91, 75, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(91, 75, 255, 0.04) 1px, transparent 1px);
 }
 
 .bg-tech-dots {
   background-size: 24px 24px;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(91, 75, 255, 0.08) 1px, transparent 1px);
 }
 
 /* Subtle Shimmer / Moving Light Reflection */
@@ -219,8 +257,8 @@ body {
   background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0,
-    rgba(255, 255, 255, 0.04) 20%,
-    rgba(255, 255, 255, 0.08) 50%,
+    rgba(167, 139, 250, 0.08) 20%,
+    rgba(91, 75, 255, 0.12) 50%,
     rgba(255, 255, 255, 0) 80%
   );
   animation: shimmer 6s infinite;

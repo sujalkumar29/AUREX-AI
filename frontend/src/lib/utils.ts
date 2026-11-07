@@ -23,25 +23,25 @@ export function formatDate(dateString: string): string {
 export function getStatusColor(status: string) {
   switch (status.toLowerCase()) {
     case "approved":
-      return "text-white bg-[#181818] border-white/70";
+      return "text-[#0D0B2D] bg-[#E6E0FF] border-[#5B4BFF]/40 font-bold shadow-sm";
     case "ready for review":
     case "ready_for_review":
-      return "text-[#D4D4D4] bg-[#111111] border-[#555555]";
+      return "text-[#5B4BFF] bg-[#F0EDFF] border-[#A78BFA]/50 font-semibold";
     case "changes required":
     case "changes_required":
-      return "text-white bg-[#181818] border-2 border-[#D4D4D4] font-semibold";
+      return "text-[#17143A] bg-[#FFFFFF] border-2 border-[#5B4BFF] font-bold shadow-sm";
     case "rejected":
-      return "text-[#777777] bg-black border-[#292929]";
+      return "text-[#77738F] bg-[#F7F8FF] border-[#E5E1F2]";
     case "analyzing":
-      return "text-white bg-[#181818] border-white/40 animate-pulse";
+      return "text-[#5B4BFF] bg-[#E6E0FF] border-[#5B4BFF] animate-pulse font-semibold";
     default:
-      return "text-[#A1A1A1] bg-[#111111] border-[#292929]";
+      return "text-[#77738F] bg-[#F0EDFF] border-[#E5E1F2]";
   }
 }
 
 export function getScoreBadge(score: number) {
-  if (score >= 90) return { label: "Exceptional Governance", color: "text-white" };
-  if (score >= 75) return { label: "Verified Standard", color: "text-[#D4D4D4]" };
-  if (score >= 60) return { label: "Review Required", color: "text-[#A1A1A1]" };
-  return { label: "Action Required", color: "text-[#777777]" };
+  if (score >= 90) return { label: "Exceptional Governance", color: "text-[#5B4BFF]" };
+  if (score >= 75) return { label: "Verified Standard", color: "text-[#0D0B2D]" };
+  if (score >= 60) return { label: "Review Required", color: "text-[#A78BFA]" };
+  return { label: "Action Required", color: "text-[#77738F]" };
 }

@@ -8,72 +8,48 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Strict Monochromatic Enterprise System:
-        mono: {
-          black: "#000000",
-          deep: "#090909",
-          surface: "#111111",
-          elevated: "#181818",
-          border: "#292929",
-          muted: "#777777",
-          secondary: "#A1A1A1",
-          light: "#D4D4D4",
-          white: "#FFFFFF",
-          offwhite: "#F5F5F5",
+        // Official AUREX AI Lavender + Purple Palette
+        aurex: {
+          primary: "#0D0B2D",       // Deep midnight purple
+          accent: "#5B4BFF",        // Electric purple
+          secondary: "#A78BFA",     // Soft purple / violet
+          surface: "#E6E0FF",       // Lavender surface tint
+          bg: "#F7F8FF",            // Soft cloud white background
+          textPrimary: "#17143A",   // Deep purple headings & primary text
+          textSecondary: "#77738F", // Muted secondary text
+          border: "#E5E1F2",        // Soft border
+          mutedSurface: "#F0EDFF",  // Light lavender card background
         },
-        // Universal color aliases mapped strictly to monochrome
-        black: "#000000",
-        white: "#FFFFFF",
+        lavender: {
+          50: "#F7F8FF",
+          100: "#F0EDFF",
+          200: "#E6E0FF",
+          300: "#D3CAFF",
+          400: "#A78BFA",
+          500: "#8057FF",
+          600: "#5B4BFF",
+          700: "#4534D4",
+          800: "#29205C",
+          900: "#17143A",
+          950: "#0D0B2D",
+        },
+        primary: "#0D0B2D",
+        accent: "#5B4BFF",
+        secondary: "#A78BFA",
+        surface: "#E6E0FF",
         midnight: {
-          DEFAULT: "#000000",
-          50: "#F5F5F5",
-          100: "#E5E5E5",
-          200: "#D4D4D4",
-          300: "#A1A1A1",
-          400: "#777777",
-          500: "#555555",
-          600: "#333333",
-          700: "#292929",
-          800: "#181818",
-          900: "#111111",
-          950: "#090909",
-        },
-        slate: {
-          deep: "rgba(18, 18, 18, 0.75)",
-          card: "rgba(24, 24, 24, 0.75)",
-          border: "rgba(255, 255, 255, 0.1)",
-        },
-        offwhite: {
-          DEFAULT: "#F5F5F5",
-          pure: "#FFFFFF",
-          muted: "#D4D4D4",
-          dark: "#A1A1A1",
-        },
-        teal: {
-          muted: "#D4D4D4",
-          light: "#FFFFFF",
-          dark: "#A1A1A1",
-          glow: "rgba(255, 255, 255, 0.15)",
-        },
-        silver: {
-          DEFAULT: "#A1A1A1",
-          light: "#D4D4D4",
-          dark: "#777777",
-        },
-        charcoal: {
-          DEFAULT: "rgba(24, 24, 24, 0.8)",
-          50: "#292929",
-          100: "#181818",
-          200: "#111111",
-          300: "#090909",
-        },
-        signal: {
-          emerald: "#FFFFFF",
-          emeraldLight: "rgba(255, 255, 255, 0.08)",
-          crimson: "#D4D4D4",
-          crimsonLight: "rgba(255, 255, 255, 0.04)",
-          amber: "#A1A1A1",
-          amberLight: "rgba(255, 255, 255, 0.06)",
+          DEFAULT: "#0D0B2D",
+          50: "#F7F8FF",
+          100: "#F0EDFF",
+          200: "#E6E0FF",
+          300: "#D3CAFF",
+          400: "#A78BFA",
+          500: "#8057FF",
+          600: "#5B4BFF",
+          700: "#4534D4",
+          800: "#29205C",
+          900: "#17143A",
+          950: "#0D0B2D",
         },
       },
       fontFamily: {
@@ -81,22 +57,21 @@ module.exports = {
         mono: ["Geist Mono", "JetBrains Mono", "SF Mono", "Menlo", "Consolas", "monospace"],
       },
       borderRadius: {
-        sm: "3px",
-        DEFAULT: "6px",
-        md: "8px",
-        lg: "10px",
-        xl: "14px",
-        "2xl": "18px",
+        sm: "4px",
+        DEFAULT: "8px",
+        md: "10px",
+        lg: "12px",
+        xl: "16px",
+        "2xl": "22px",
       },
       boxShadow: {
-        technical: "0 1px 3px 0 rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08)",
-        elevation: "0 12px 40px -10px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.1)",
-        subtleWhite: "0 0 25px -5px rgba(255, 255, 255, 0.08)",
-        glass: "0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)",
-        glassHover: "0 16px 44px 0 rgba(0, 0, 0, 0.65), 0 0 24px 0 rgba(255, 255, 255, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.2)",
-        glassElevated: "0 20px 50px 0 rgba(0, 0, 0, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.14)",
-        glassGlow: "0 0 30px -5px rgba(255, 255, 255, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.2)",
-        glassInner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.7)",
+        technical: "0 1px 3px 0 rgba(13, 11, 45, 0.06), 0 0 0 1px #E5E1F2",
+        elevation: "0 12px 40px -10px rgba(91, 75, 255, 0.15), 0 0 0 1px rgba(91, 75, 255, 0.1)",
+        purpleGlow: "0 0 30px -5px rgba(91, 75, 255, 0.25)",
+        glass: "0 8px 32px 0 rgba(91, 75, 255, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.95)",
+        glassHover: "0 16px 44px 0 rgba(91, 75, 255, 0.12), 0 0 24px 0 rgba(167, 139, 250, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 1)",
+        glassElevated: "0 20px 50px 0 rgba(91, 75, 255, 0.10), inset 0 1px 0 0 rgba(255, 255, 255, 1)",
+        glassInner: "inset 0 2px 4px 0 rgba(13, 11, 45, 0.04)",
       },
       keyframes: {
         shimmer: {

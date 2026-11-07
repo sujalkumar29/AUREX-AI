@@ -306,8 +306,8 @@ export default function BrandDNAWorkspacePage() {
 
   if (loading || isLoadingBrands) {
     return (
-      <div className="p-16 text-center text-xs font-mono text-[#A1A1A1] flex items-center justify-center space-x-2">
-        <Activity className="w-4 h-4 text-white animate-pulse" />
+      <div className="p-16 text-center text-xs font-mono text-[#77738F] flex items-center justify-center space-x-2">
+        <Activity className="w-4 h-4 text-[#5B4BFF] animate-pulse" />
         <span>Synchronizing Brand DNA Vault...</span>
       </div>
     );
@@ -315,14 +315,14 @@ export default function BrandDNAWorkspacePage() {
 
   if (!selectedBrand || !dna) {
     return (
-      <div className="glass-panel p-12 text-center max-w-xl mx-auto rounded-[12px] space-y-4">
-        <Building2 className="w-12 h-12 text-[#777777] mx-auto" />
-        <h2 className="text-xl font-bold text-white">No Brand Found</h2>
-        <p className="text-xs text-[#A1A1A1]">Create a brand to initialize your Brand DNA knowledge repository.</p>
+      <div className="glass-panel p-12 text-center max-w-xl mx-auto rounded-[16px] space-y-4 bg-white/80 border border-[#E5E1F2] shadow-lg">
+        <Building2 className="w-12 h-12 text-[#5B4BFF] mx-auto" />
+        <h2 className="text-xl font-bold text-[#0D0B2D]">No Brand Found</h2>
+        <p className="text-xs text-[#77738F]">Create a brand to initialize your Brand DNA knowledge repository.</p>
         {isAdmin && (
           <button
             onClick={() => setShowCreateBrandModal(true)}
-            className="px-5 py-2.5 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider font-mono transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+            className="px-5 py-2.5 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold text-xs uppercase tracking-wider font-mono transition-all shadow-[0_4px_14px_rgba(91,75,255,0.3)]"
           >
             Create First Brand
           </button>
@@ -332,53 +332,53 @@ export default function BrandDNAWorkspacePage() {
   }
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto font-sans text-[#F5F5F5]">
+    <div className="space-y-6 max-w-7xl mx-auto font-sans text-[#17143A]">
       {/* Toast Feedback */}
       {successMsg && (
-        <div className="glass-card p-3 rounded-[6px] border-white/30 text-white text-xs font-mono flex items-center justify-between shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+        <div className="glass-card p-3 rounded-[8px] border-[#5B4BFF]/30 bg-[#F0EDFF] text-[#0D0B2D] text-xs font-mono flex items-center justify-between shadow-sm">
           <div className="flex items-center space-x-2">
-            <CheckCircle2 className="w-4 h-4 text-white" />
+            <CheckCircle2 className="w-4 h-4 text-[#5B4BFF]" />
             <span>{successMsg}</span>
           </div>
-          <button onClick={() => setSuccessMsg(null)}><X className="w-3.5 h-3.5" /></button>
+          <button onClick={() => setSuccessMsg(null)}><X className="w-3.5 h-3.5 text-[#77738F]" /></button>
         </div>
       )}
       {errorMsg && (
-        <div className="glass-card p-3 rounded-[6px] border-2 border-[#D4D4D4] text-white text-xs font-mono flex items-center justify-between">
+        <div className="glass-card p-3 rounded-[8px] border-2 border-red-300 bg-red-50 text-red-700 text-xs font-mono flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <AlertTriangle className="w-4 h-4 text-white" />
+            <AlertTriangle className="w-4 h-4 text-red-600" />
             <span>{errorMsg}</span>
           </div>
-          <button onClick={() => setErrorMsg(null)}><X className="w-3.5 h-3.5" /></button>
+          <button onClick={() => setErrorMsg(null)}><X className="w-3.5 h-3.5 text-red-600" /></button>
         </div>
       )}
 
       {/* Role Banner if not admin */}
       {!isAdmin && (
-        <div className="glass-inner p-3 rounded-[6px] border border-white/10 text-[#A1A1A1] text-xs font-mono flex items-center space-x-2">
-          <Info className="w-4 h-4 text-white flex-shrink-0" />
-          <span>Governance Mode: Viewing active Brand DNA as <strong className="text-white">{role}</strong>. Only Administrators can mutate brand rules and identity assets.</span>
+        <div className="glass-inner p-3 rounded-[8px] border border-[#E5E1F2] bg-[#F0EDFF]/80 text-[#77738F] text-xs font-mono flex items-center space-x-2">
+          <Info className="w-4 h-4 text-[#5B4BFF] flex-shrink-0" />
+          <span>Governance Mode: Viewing active Brand DNA as <strong className="text-[#0D0B2D]">{role}</strong>. Only Administrators can mutate brand rules and identity assets.</span>
         </div>
       )}
 
       {/* Workspace Header - Glassmorphic Elevated Container */}
-      <div className="glass-card-elevated shimmer-sweep p-6 md:p-8 rounded-[12px] border border-white/15 relative overflow-hidden flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-2xl">
+      <div className="glass-card-elevated shimmer-sweep p-6 md:p-8 rounded-[16px] border border-[#E5E1F2] bg-white/80 relative overflow-hidden flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-xl">
         <div className="space-y-2 z-10">
-          <div className="inline-flex items-center space-x-2 text-[10px] font-mono uppercase tracking-[0.16em] text-[#D4D4D4] px-2.5 py-1 rounded-[4px] bg-white/5 border border-white/10">
-            <Database className="w-3.5 h-3.5 text-white" />
+          <div className="inline-flex items-center space-x-2 text-[10px] font-mono uppercase tracking-[0.16em] text-[#5B4BFF] px-2.5 py-1 rounded-[6px] bg-[#E6E0FF] border border-[#5B4BFF]/25">
+            <Database className="w-3.5 h-3.5 text-[#5B4BFF]" />
             <span>FOUNDATIONAL KNOWLEDGE VAULT</span>
           </div>
           <div className="flex items-center space-x-3">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Brand DNA: <span className="text-[#D4D4D4]">{dna.brand.name}</span>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0D0B2D] tracking-tight">
+              Brand DNA: <span className="text-[#5B4BFF]">{dna.brand.name}</span>
             </h1>
             {dna.brand.is_default && (
-              <span className="glass-pill text-[10px] font-mono uppercase px-2 py-0.5 rounded-[4px] text-white border border-white/15">
+              <span className="glass-pill text-[10px] font-mono uppercase px-2 py-0.5 rounded-[4px] text-[#5B4BFF] bg-[#E6E0FF] border border-[#5B4BFF]/20 font-bold">
                 Primary Brand
               </span>
             )}
           </div>
-          <p className="text-xs text-[#A1A1A1] max-w-2xl font-normal leading-relaxed">
+          <p className="text-xs text-[#77738F] max-w-2xl font-normal leading-relaxed">
             {dna.brand.description || "The authoritative source of truth against which every piece of copy, claim, and visual asset is verified by the AI governance engine."}
           </p>
         </div>
@@ -392,10 +392,10 @@ export default function BrandDNAWorkspacePage() {
                 const b = brands.find((item) => item.id === e.target.value);
                 if (b) setSelectedBrand(b);
               }}
-              className="glass-input px-3.5 py-2 rounded-[6px] text-xs font-mono text-white"
+              className="glass-input px-3.5 py-2 rounded-[8px] text-xs font-mono text-[#17143A] bg-white border border-[#E5E1F2] focus:border-[#5B4BFF] focus:outline-none"
             >
               {brands.map((b) => (
-                <option key={b.id} value={b.id} className="bg-black text-white">
+                <option key={b.id} value={b.id} className="bg-white text-[#17143A]">
                   {b.name} {b.is_default ? "(Default)" : ""}
                 </option>
               ))}
@@ -406,16 +406,16 @@ export default function BrandDNAWorkspacePage() {
             <>
               <button
                 onClick={() => setShowEditBrandModal(true)}
-                className="glass-button px-3.5 py-2 rounded-[6px] text-xs font-mono flex items-center space-x-1.5"
+                className="glass-button px-3.5 py-2 rounded-[8px] text-xs font-mono flex items-center space-x-1.5 border border-[#E5E1F2] bg-white text-[#0D0B2D] hover:bg-[#F0EDFF] hover:text-[#5B4BFF] transition-colors"
               >
-                <Edit3 className="w-3.5 h-3.5 text-white" />
+                <Edit3 className="w-3.5 h-3.5 text-[#5B4BFF]" />
                 <span>Edit Profile</span>
               </button>
               <button
                 onClick={() => setShowCreateBrandModal(true)}
-                className="px-4 py-2 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_0_18px_rgba(255,255,255,0.2)] flex items-center space-x-1.5"
+                className="px-4 py-2 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_4px_14px_rgba(91,75,255,0.3)] flex items-center space-x-1.5"
               >
-                <Plus className="w-3.5 h-3.5 text-black" />
+                <Plus className="w-3.5 h-3.5 text-white" />
                 <span>New Brand</span>
               </button>
             </>
@@ -425,32 +425,32 @@ export default function BrandDNAWorkspacePage() {
 
       {/* Quick Metric Telemetry - Translucent Glass Chips */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
-        <div className="glass-card p-3.5 rounded-[8px] flex items-center justify-between">
-          <span className="text-[#A1A1A1]">VERIFIED FACTS</span>
-          <span className="font-bold text-white text-base">{dna.facts.length}</span>
+        <div className="glass-card p-3.5 rounded-[12px] flex items-center justify-between border border-[#E5E1F2] bg-white/70 shadow-sm">
+          <span className="text-[#77738F]">VERIFIED FACTS</span>
+          <span className="font-bold text-[#0D0B2D] text-base">{dna.facts.length}</span>
         </div>
-        <div className="glass-card p-3.5 rounded-[8px] flex items-center justify-between">
-          <span className="text-[#A1A1A1]">VOCABULARY RULES</span>
-          <span className="font-bold text-white text-base">{dna.terminologies.length}</span>
+        <div className="glass-card p-3.5 rounded-[12px] flex items-center justify-between border border-[#E5E1F2] bg-white/70 shadow-sm">
+          <span className="text-[#77738F]">VOCABULARY RULES</span>
+          <span className="font-bold text-[#0D0B2D] text-base">{dna.terminologies.length}</span>
         </div>
-        <div className="glass-card p-3.5 rounded-[8px] flex items-center justify-between">
-          <span className="text-[#A1A1A1]">GUIDELINE RULES</span>
-          <span className="font-bold text-white text-base">{dna.guidelines.length}</span>
+        <div className="glass-card p-3.5 rounded-[12px] flex items-center justify-between border border-[#E5E1F2] bg-white/70 shadow-sm">
+          <span className="text-[#77738F]">GUIDELINE RULES</span>
+          <span className="font-bold text-[#0D0B2D] text-base">{dna.guidelines.length}</span>
         </div>
-        <div className="glass-card p-3.5 rounded-[8px] flex items-center justify-between">
-          <span className="text-[#A1A1A1]">VISUAL ASSETS</span>
-          <span className="font-bold text-white text-base">{dna.assets.length + 5}</span>
+        <div className="glass-card p-3.5 rounded-[12px] flex items-center justify-between border border-[#E5E1F2] bg-white/70 shadow-sm">
+          <span className="text-[#77738F]">VISUAL ASSETS</span>
+          <span className="font-bold text-[#0D0B2D] text-base">{dna.assets.length + 5}</span>
         </div>
       </div>
 
       {/* Workspace Tabs - Floating Glass Strip */}
-      <div className="glass-pill p-1.5 rounded-[8px] flex space-x-1.5 overflow-x-auto text-xs font-mono border border-white/10">
+      <div className="glass-pill p-1.5 rounded-[10px] flex space-x-1.5 overflow-x-auto text-xs font-mono border border-[#E5E1F2] bg-[#F0EDFF]/80">
         <button
           onClick={() => setActiveTab("identity")}
-          className={`py-2 px-3.5 rounded-[6px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
+          className={`py-2 px-3.5 rounded-[8px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
             activeTab === "identity"
-              ? "bg-white text-black font-bold shadow-sm"
-              : "text-[#A1A1A1] hover:text-white hover:bg-white/5"
+              ? "bg-[#5B4BFF] text-white font-bold shadow-sm"
+              : "text-[#77738F] hover:text-[#0D0B2D] hover:bg-white/60"
           }`}
         >
           <Building2 className="w-3.5 h-3.5" />
@@ -458,10 +458,10 @@ export default function BrandDNAWorkspacePage() {
         </button>
         <button
           onClick={() => setActiveTab("guidelines")}
-          className={`py-2 px-3.5 rounded-[6px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
+          className={`py-2 px-3.5 rounded-[8px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
             activeTab === "guidelines"
-              ? "bg-white text-black font-bold shadow-sm"
-              : "text-[#A1A1A1] hover:text-white hover:bg-white/5"
+              ? "bg-[#5B4BFF] text-white font-bold shadow-sm"
+              : "text-[#77738F] hover:text-[#0D0B2D] hover:bg-white/60"
           }`}
         >
           <BookOpen className="w-3.5 h-3.5" />
@@ -469,10 +469,10 @@ export default function BrandDNAWorkspacePage() {
         </button>
         <button
           onClick={() => setActiveTab("facts")}
-          className={`py-2 px-3.5 rounded-[6px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
+          className={`py-2 px-3.5 rounded-[8px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
             activeTab === "facts"
-              ? "bg-white text-black font-bold shadow-sm"
-              : "text-[#A1A1A1] hover:text-white hover:bg-white/5"
+              ? "bg-[#5B4BFF] text-white font-bold shadow-sm"
+              : "text-[#77738F] hover:text-[#0D0B2D] hover:bg-white/60"
           }`}
         >
           <CheckCircle2 className="w-3.5 h-3.5" />
@@ -480,10 +480,10 @@ export default function BrandDNAWorkspacePage() {
         </button>
         <button
           onClick={() => setActiveTab("terminology")}
-          className={`py-2 px-3.5 rounded-[6px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
+          className={`py-2 px-3.5 rounded-[8px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
             activeTab === "terminology"
-              ? "bg-white text-black font-bold shadow-sm"
-              : "text-[#A1A1A1] hover:text-white hover:bg-white/5"
+              ? "bg-[#5B4BFF] text-white font-bold shadow-sm"
+              : "text-[#77738F] hover:text-[#0D0B2D] hover:bg-white/60"
           }`}
         >
           <Hash className="w-3.5 h-3.5" />
@@ -491,10 +491,10 @@ export default function BrandDNAWorkspacePage() {
         </button>
         <button
           onClick={() => setActiveTab("visuals")}
-          className={`py-2 px-3.5 rounded-[6px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
+          className={`py-2 px-3.5 rounded-[8px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
             activeTab === "visuals"
-              ? "bg-white text-black font-bold shadow-sm"
-              : "text-[#A1A1A1] hover:text-white hover:bg-white/5"
+              ? "bg-[#5B4BFF] text-white font-bold shadow-sm"
+              : "text-[#77738F] hover:text-[#0D0B2D] hover:bg-white/60"
           }`}
         >
           <Palette className="w-3.5 h-3.5" />
@@ -502,10 +502,10 @@ export default function BrandDNAWorkspacePage() {
         </button>
         <button
           onClick={() => setActiveTab("upload")}
-          className={`py-2 px-3.5 rounded-[6px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
+          className={`py-2 px-3.5 rounded-[8px] flex items-center space-x-2 transition-all whitespace-nowrap uppercase tracking-wider ${
             activeTab === "upload"
-              ? "bg-white text-black font-bold shadow-sm"
-              : "text-[#A1A1A1] hover:text-white hover:bg-white/5"
+              ? "bg-[#5B4BFF] text-white font-bold shadow-sm"
+              : "text-[#77738F] hover:text-[#0D0B2D] hover:bg-white/60"
           }`}
         >
           <Upload className="w-3.5 h-3.5" />
@@ -516,18 +516,18 @@ export default function BrandDNAWorkspacePage() {
       {/* Tab 0: Core Identity */}
       {activeTab === "identity" && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="glass-panel p-6 rounded-[12px] border border-white/12 space-y-4 shadow-xl">
+          <div className="glass-panel p-6 rounded-[14px] border border-[#E5E1F2] space-y-4 shadow-sm bg-white/80">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white flex items-center space-x-2">
-                <Building2 className="w-4 h-4 text-white" />
+              <h3 className="text-xs font-mono uppercase tracking-wider text-[#0D0B2D] flex items-center space-x-2 font-bold">
+                <Building2 className="w-4 h-4 text-[#5B4BFF]" />
                 <span>Foundational Profile</span>
               </h3>
               {isAdmin && (
                 <button
                   onClick={() => setShowEditBrandModal(true)}
-                  className="text-xs font-mono text-[#A1A1A1] hover:text-white flex items-center space-x-1"
+                  className="text-xs font-mono text-[#77738F] hover:text-[#5B4BFF] flex items-center space-x-1"
                 >
-                  <Edit3 className="w-3.5 h-3.5 text-white" />
+                  <Edit3 className="w-3.5 h-3.5 text-[#5B4BFF]" />
                   <span>Edit</span>
                 </button>
               )}
@@ -535,22 +535,22 @@ export default function BrandDNAWorkspacePage() {
 
             <div className="space-y-3 text-xs">
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#777777] block">Brand Name</span>
-                <p className="text-white font-bold text-sm mt-0.5">{dna.brand.name}</p>
+                <span className="text-[10px] font-mono uppercase text-[#77738F] block font-semibold">Brand Name</span>
+                <p className="text-[#0D0B2D] font-bold text-sm mt-0.5">{dna.brand.name}</p>
               </div>
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#777777] block">Industry Sector</span>
-                <p className="text-white font-medium mt-0.5">{dna.brand.industry || "Enterprise Software"}</p>
+                <span className="text-[10px] font-mono uppercase text-[#77738F] block font-semibold">Industry Sector</span>
+                <p className="text-[#17143A] font-medium mt-0.5">{dna.brand.industry || "Enterprise Software"}</p>
               </div>
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#777777] block">Official Website</span>
-                <p className="text-[#D4D4D4] font-mono mt-0.5">{dna.brand.website || "https://aurex.ai"}</p>
+                <span className="text-[10px] font-mono uppercase text-[#77738F] block font-semibold">Official Website</span>
+                <p className="text-[#5B4BFF] font-mono mt-0.5">{dna.brand.website || "https://aurex.ai"}</p>
               </div>
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#777777] block">Brand Personality Traits</span>
+                <span className="text-[10px] font-mono uppercase text-[#77738F] block font-semibold">Brand Personality Traits</span>
                 <div className="flex flex-wrap gap-1.5 mt-1">
                   {(dna.brand.personality || "authoritative, precise, institutional").split(",").map((trait, i) => (
-                    <span key={i} className="glass-pill px-2.5 py-0.5 rounded-[4px] text-[#D4D4D4] text-[11px] font-mono">
+                    <span key={i} className="glass-pill px-2.5 py-0.5 rounded-[6px] text-[#5B4BFF] bg-[#E6E0FF] text-[11px] font-mono border border-[#5B4BFF]/20 font-medium">
                       {trait.trim()}
                     </span>
                   ))}
@@ -559,22 +559,22 @@ export default function BrandDNAWorkspacePage() {
             </div>
           </div>
 
-          <div className="glass-panel p-6 rounded-[12px] border border-white/12 space-y-4 shadow-xl">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-white flex items-center space-x-2">
-              <Sparkles className="w-4 h-4 text-white" />
+          <div className="glass-panel p-6 rounded-[14px] border border-[#E5E1F2] space-y-4 shadow-sm bg-white/80">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-[#0D0B2D] flex items-center space-x-2 font-bold">
+              <Sparkles className="w-4 h-4 text-[#5B4BFF]" />
               <span>Mission & Core Values</span>
             </h3>
 
             <div className="space-y-4 text-xs">
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#777777] block">Brand Mission Statement</span>
-                <p className="text-[#D4D4D4] leading-relaxed mt-1 italic border-l-2 border-white/40 pl-3">
+                <span className="text-[10px] font-mono uppercase text-[#77738F] block font-semibold">Brand Mission Statement</span>
+                <p className="text-[#17143A] leading-relaxed mt-1 italic border-l-2 border-[#5B4BFF] pl-3">
                   &ldquo;{dna.brand.mission || "To establish undeniable institutional trust through autonomous governance and uncompromising evidence standards."}&rdquo;
                 </p>
               </div>
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#777777] block">Guiding Institutional Values</span>
-                <p className="text-[#D4D4D4] leading-relaxed mt-1">
+                <span className="text-[10px] font-mono uppercase text-[#77738F] block font-semibold">Guiding Institutional Values</span>
+                <p className="text-[#77738F] leading-relaxed mt-1">
                   {dna.brand.values || "Deterministic precision, full auditability, zero compromise on claim truth, human oversight sovereignty."}
                 </p>
               </div>
@@ -587,33 +587,33 @@ export default function BrandDNAWorkspacePage() {
       {activeTab === "guidelines" && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-[#A1A1A1]">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-[#77738F] font-semibold">
               Active Brand Guidelines ({dna.guidelines.length})
             </h3>
             {dna.guidelines.length === 0 ? (
-              <p className="glass-panel p-4 rounded-[8px] text-xs text-[#777777] font-mono">
+              <p className="glass-panel p-4 rounded-[10px] text-xs text-[#77738F] font-mono bg-white/60 border border-[#E5E1F2]">
                 No guidelines defined. Add the first rule using the form on the right.
               </p>
             ) : (
               dna.guidelines.map((g) => (
-                <div key={g.id} className="glass-card p-4 rounded-[8px] border border-white/10 space-y-2 relative group">
+                <div key={g.id} className="glass-card p-4 rounded-[12px] border border-[#E5E1F2] bg-white/80 space-y-2 relative group shadow-sm hover:border-[#5B4BFF]/40 transition-all">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white">{g.title}</span>
+                    <span className="text-xs font-bold text-[#0D0B2D]">{g.title}</span>
                     <div className="flex items-center space-x-2">
                       <span className={`text-[10px] uppercase font-mono px-2 py-0.5 rounded-[4px] font-bold ${
                         g.rule_type === "prohibited" 
-                          ? "bg-[#181818] border border-white/20 text-white" 
-                          : "bg-white text-black font-bold shadow-sm"
+                          ? "bg-red-50 border border-red-200 text-red-700" 
+                          : "bg-[#E6E0FF] text-[#5B4BFF] border border-[#5B4BFF]/25"
                       }`}>
                         {g.rule_type}
                       </span>
-                      <span className="glass-pill text-[10px] uppercase font-mono px-1.5 py-0.5 rounded-[4px] text-[#A1A1A1]">
+                      <span className="glass-pill text-[10px] uppercase font-mono px-1.5 py-0.5 rounded-[4px] text-[#77738F] bg-[#F0EDFF] border border-[#E5E1F2]">
                         {g.severity}
                       </span>
                       {isAdmin && (
                         <button
                           onClick={() => handleDeleteGuideline(g.id)}
-                          className="text-[#777777] hover:text-white transition-colors p-1"
+                          className="text-[#77738F] hover:text-red-600 transition-colors p-1"
                           title="Delete Guideline"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -621,8 +621,8 @@ export default function BrandDNAWorkspacePage() {
                       )}
                     </div>
                   </div>
-                  <p className="text-xs text-[#D4D4D4] leading-relaxed">{g.content}</p>
-                  <span className="text-[10px] text-[#777777] font-mono">Category: {g.category.replace('_', ' ')}</span>
+                  <p className="text-xs text-[#17143A] leading-relaxed">{g.content}</p>
+                  <span className="text-[10px] text-[#77738F] font-mono">Category: {g.category.replace('_', ' ')}</span>
                 </div>
               ))
             )}
@@ -630,80 +630,80 @@ export default function BrandDNAWorkspacePage() {
 
           {/* Add Guideline Form */}
           {isAdmin ? (
-            <div className="glass-panel p-5 rounded-[12px] border border-white/12 space-y-4 h-fit shadow-xl">
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white">Add Governance Rule</h3>
+            <div className="glass-panel p-5 rounded-[14px] border border-[#E5E1F2] space-y-4 h-fit shadow-md bg-white/80">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-[#0D0B2D] font-bold">Add Governance Rule</h3>
               <form onSubmit={handleAddGuideline} className="space-y-3 text-xs">
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Rule Title</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Rule Title</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Hyperbole Prohibition"
                     value={newGuideline.title}
                     onChange={(e) => setNewGuideline({ ...newGuideline, title: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Category</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Category</label>
                   <select
                     value={newGuideline.category}
                     onChange={(e) => setNewGuideline({ ...newGuideline, category: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   >
-                    <option value="messaging_rule" className="bg-black text-white">Messaging & Positioning</option>
-                    <option value="voice_tone" className="bg-black text-white">Voice & Tone</option>
-                    <option value="visual_identity" className="bg-black text-white">Visual Identity Rule</option>
-                    <option value="regulatory_compliance" className="bg-black text-white">Regulatory / Legal</option>
+                    <option value="messaging_rule">Messaging & Positioning</option>
+                    <option value="voice_tone">Voice & Tone</option>
+                    <option value="visual_identity">Visual Identity Rule</option>
+                    <option value="regulatory_compliance">Regulatory / Legal</option>
                   </select>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Rule Type</label>
+                    <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Rule Type</label>
                     <select
                       value={newGuideline.rule_type}
                       onChange={(e) => setNewGuideline({ ...newGuideline, rule_type: e.target.value as any })}
-                      className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                      className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                     >
-                      <option value="approved" className="bg-black text-white">Approved</option>
-                      <option value="prohibited" className="bg-black text-white">Prohibited</option>
-                      <option value="general" className="bg-black text-white">General Standard</option>
+                      <option value="approved">Approved</option>
+                      <option value="prohibited">Prohibited</option>
+                      <option value="general">General Standard</option>
                     </select>
                   </div>
                   <div>
-                    <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Severity</label>
+                    <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Severity</label>
                     <select
                       value={newGuideline.severity}
                       onChange={(e) => setNewGuideline({ ...newGuideline, severity: e.target.value as any })}
-                      className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                      className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                     >
-                      <option value="critical" className="bg-black text-white">Critical</option>
-                      <option value="warning" className="bg-black text-white">Warning</option>
-                      <option value="info" className="bg-black text-white">Info</option>
+                      <option value="critical">Critical</option>
+                      <option value="warning">Warning</option>
+                      <option value="info">Info</option>
                     </select>
                   </div>
                 </div>
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Rule Description & Criteria</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Rule Description & Criteria</label>
                   <textarea
                     required
                     rows={3}
                     placeholder="Explain the constraint and what violations look like..."
                     value={newGuideline.content}
                     onChange={(e) => setNewGuideline({ ...newGuideline, content: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-3 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                  className="w-full py-2.5 px-3 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_4px_14px_rgba(91,75,255,0.3)]"
                 >
                   Save Guideline Rule
                 </button>
               </form>
             </div>
           ) : (
-            <div className="glass-panel p-5 rounded-[12px] border border-white/10 text-xs text-[#777777] font-mono">
+            <div className="glass-panel p-5 rounded-[14px] border border-[#E5E1F2] text-xs text-[#77738F] font-mono bg-white/70">
               Administrator credentials required to create or modify brand guidelines.
             </div>
           )}
@@ -714,35 +714,35 @@ export default function BrandDNAWorkspacePage() {
       {activeTab === "facts" && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-[#A1A1A1]">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-[#77738F] font-semibold">
               Verified Brand Facts & Proof Points ({dna.facts.length})
             </h3>
             {dna.facts.length === 0 ? (
-              <p className="glass-panel p-4 rounded-[8px] text-xs text-[#777777] font-mono">
+              <p className="glass-panel p-4 rounded-[10px] text-xs text-[#77738F] font-mono bg-white/60 border border-[#E5E1F2]">
                 No verified facts in vault. Register official claims to power RAG claim verification.
               </p>
             ) : (
               dna.facts.map((f) => (
-                <div key={f.id} className="glass-card p-4 rounded-[8px] border border-white/10 space-y-2 relative group">
+                <div key={f.id} className="glass-card p-4 rounded-[12px] border border-[#E5E1F2] bg-white/80 space-y-2 relative group shadow-sm hover:border-[#5B4BFF]/40 transition-all">
                   <div className="flex items-center justify-between">
-                    <span className="glass-pill text-[10px] uppercase font-mono px-2 py-0.5 rounded-[4px] text-white font-bold">
+                    <span className="glass-pill text-[10px] uppercase font-mono px-2 py-0.5 rounded-[4px] text-[#5B4BFF] bg-[#E6E0FF] border border-[#5B4BFF]/25 font-bold">
                       {f.category}
                     </span>
                     {isAdmin && (
                       <button
                         onClick={() => handleDeleteFact(f.id)}
-                        className="text-[#777777] hover:text-white transition-colors p-1"
+                        className="text-[#77738F] hover:text-red-600 transition-colors p-1"
                         title="Delete Fact"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     )}
                   </div>
-                  <p className="text-xs font-semibold text-white font-mono leading-relaxed">&ldquo;{f.claim_text}&rdquo;</p>
-                  <div className="flex items-center space-x-3 text-[10px] text-[#A1A1A1] font-mono pt-1 border-t border-white/10">
-                    <span>Source: <strong className="text-white">{f.source_name}</strong></span>
+                  <p className="text-xs font-semibold text-[#0D0B2D] font-mono leading-relaxed">&ldquo;{f.claim_text}&rdquo;</p>
+                  <div className="flex items-center space-x-3 text-[10px] text-[#77738F] font-mono pt-1 border-t border-[#E5E1F2]">
+                    <span>Source: <strong className="text-[#0D0B2D]">{f.source_name}</strong></span>
                     {f.source_url_or_ref && (
-                      <span className="text-[#D4D4D4] truncate max-w-[200px]">{f.source_url_or_ref}</span>
+                      <span className="text-[#5B4BFF] truncate max-w-[200px]">{f.source_url_or_ref}</span>
                     )}
                   </div>
                 </div>
@@ -752,65 +752,65 @@ export default function BrandDNAWorkspacePage() {
 
           {/* Add Fact Form */}
           {isAdmin ? (
-            <div className="glass-panel p-5 rounded-[12px] border border-white/12 space-y-4 h-fit shadow-xl">
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white">Register Verified Fact</h3>
+            <div className="glass-panel p-5 rounded-[14px] border border-[#E5E1F2] space-y-4 h-fit shadow-md bg-white/80">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-[#0D0B2D] font-bold">Register Verified Fact</h3>
               <form onSubmit={handleAddFact} className="space-y-3 text-xs">
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Authoritative Claim Statement</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Authoritative Claim Statement</label>
                   <textarea
                     required
                     rows={3}
                     placeholder="e.g. Over $14.2B in annual settlement volume across 42 sovereign jurisdictions"
                     value={newFact.claim_text}
                     onChange={(e) => setNewFact({ ...newFact, claim_text: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Fact Category</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Fact Category</label>
                   <select
                     value={newFact.category}
                     onChange={(e) => setNewFact({ ...newFact, category: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   >
-                    <option value="statistic" className="bg-black text-white">Quantitative Metric / Statistic</option>
-                    <option value="certification" className="bg-black text-white">Certification / Audit</option>
-                    <option value="partnership" className="bg-black text-white">Institutional Partnership</option>
-                    <option value="sla" className="bg-black text-white">Uptime SLA / Technical Benchmark</option>
-                    <option value="milestone" className="bg-black text-white">Historical Milestone</option>
+                    <option value="statistic">Quantitative Metric / Statistic</option>
+                    <option value="certification">Certification / Audit</option>
+                    <option value="partnership">Institutional Partnership</option>
+                    <option value="sla">Uptime SLA / Technical Benchmark</option>
+                    <option value="milestone">Historical Milestone</option>
                   </select>
                 </div>
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Verification Source Name</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Verification Source Name</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. 2025 Financial Audit Report"
                     value={newFact.source_name}
                     onChange={(e) => setNewFact({ ...newFact, source_name: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Source Reference / URL</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Source Reference / URL</label>
                   <input
                     type="text"
                     placeholder="e.g. SEC Filing 10-K / Audit Sec. 4.2"
                     value={newFact.source_url_or_ref}
                     onChange={(e) => setNewFact({ ...newFact, source_url_or_ref: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-3 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                  className="w-full py-2.5 px-3 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_4px_14px_rgba(91,75,255,0.3)]"
                 >
                   Add to Evidence Vault
                 </button>
               </form>
             </div>
           ) : (
-            <div className="glass-panel p-5 rounded-[12px] border border-white/10 text-xs text-[#777777] font-mono">
+            <div className="glass-panel p-5 rounded-[14px] border border-[#E5E1F2] text-xs text-[#77738F] font-mono bg-white/70">
               Administrator credentials required to register facts in the evidence vault.
             </div>
           )}
@@ -821,41 +821,41 @@ export default function BrandDNAWorkspacePage() {
       {activeTab === "terminology" && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-[#A1A1A1]">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-[#77738F] font-semibold">
               Brand Vocabulary Rules ({dna.terminologies.length})
             </h3>
             {dna.terminologies.length === 0 ? (
-              <p className="glass-panel p-4 rounded-[8px] text-xs text-[#777777] font-mono">
+              <p className="glass-panel p-4 rounded-[10px] text-xs text-[#77738F] font-mono bg-white/60 border border-[#E5E1F2]">
                 No vocabulary rules defined. Add approved or prohibited terms using the form on the right.
               </p>
             ) : (
-              <div className="glass-panel divide-y divide-white/5 rounded-[12px] border border-white/12 overflow-hidden shadow-xl">
+              <div className="glass-panel divide-y divide-[#E5E1F2] rounded-[14px] border border-[#E5E1F2] overflow-hidden shadow-sm bg-white/80">
                 {dna.terminologies.map((t) => (
-                  <div key={t.id} className="p-4 flex items-center justify-between hover:bg-white/5 transition-colors">
+                  <div key={t.id} className="p-4 flex items-center justify-between hover:bg-[#F0EDFF]/50 transition-colors">
                     <div className="space-y-1">
                       <div className="flex items-center space-x-2">
                         <span className={`text-[10px] uppercase font-mono px-2 py-0.5 rounded-[4px] font-bold ${
                           t.term_type === "prohibited" 
-                            ? "bg-[#181818] border border-white/20 text-white" 
-                            : "bg-white text-black font-bold shadow-sm"
+                            ? "bg-red-50 border border-red-200 text-red-700" 
+                            : "bg-[#E6E0FF] text-[#5B4BFF] border border-[#5B4BFF]/25 font-bold"
                         }`}>
                           {t.term_type}
                         </span>
-                        <span className="font-bold text-white text-xs font-mono">&apos;{t.term}&apos;</span>
+                        <span className="font-bold text-[#0D0B2D] text-xs font-mono">&apos;{t.term}&apos;</span>
                       </div>
                       {t.replacement_suggestion && (
-                        <p className="text-xs text-[#D4D4D4] font-mono">
-                          Replace with: <span className="font-bold text-white underline underline-offset-2">{t.replacement_suggestion}</span>
+                        <p className="text-xs text-[#5B4BFF] font-mono">
+                          Replace with: <span className="font-bold text-[#0D0B2D] underline underline-offset-2">{t.replacement_suggestion}</span>
                         </p>
                       )}
                       {t.explanation && (
-                        <p className="text-[11px] text-[#A1A1A1] font-sans">{t.explanation}</p>
+                        <p className="text-[11px] text-[#77738F] font-sans">{t.explanation}</p>
                       )}
                     </div>
                     {isAdmin && (
                       <button
                         onClick={() => handleDeleteTerm(t.id)}
-                        className="text-[#777777] hover:text-white p-2 transition-colors"
+                        className="text-[#77738F] hover:text-red-600 p-2 transition-colors"
                         title="Delete Term"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -869,62 +869,62 @@ export default function BrandDNAWorkspacePage() {
 
           {/* Add Term Form */}
           {isAdmin ? (
-            <div className="glass-panel p-5 rounded-[12px] border border-white/12 space-y-4 h-fit shadow-xl">
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white">Add Vocabulary Rule</h3>
+            <div className="glass-panel p-5 rounded-[14px] border border-[#E5E1F2] space-y-4 h-fit shadow-md bg-white/80">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-[#0D0B2D] font-bold">Add Vocabulary Rule</h3>
               <form onSubmit={handleAddTerm} className="space-y-3 text-xs">
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Target Term</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Target Term</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. cheap settlement"
                     value={newTerm.term}
                     onChange={(e) => setNewTerm({ ...newTerm, term: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Classification</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Classification</label>
                   <select
                     value={newTerm.term_type}
                     onChange={(e) => setNewTerm({ ...newTerm, term_type: e.target.value as any })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   >
-                    <option value="prohibited" className="bg-black text-white">Strictly Prohibited</option>
-                    <option value="approved" className="bg-black text-white">Official / Approved</option>
-                    <option value="preferred" className="bg-black text-white">Preferred Phrasing</option>
+                    <option value="prohibited">Strictly Prohibited</option>
+                    <option value="approved">Official / Approved</option>
+                    <option value="preferred">Preferred Phrasing</option>
                   </select>
                 </div>
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Approved Replacement</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Approved Replacement</label>
                   <input
                     type="text"
                     placeholder="e.g. capital-efficient institutional clearing"
                     value={newTerm.replacement_suggestion}
                     onChange={(e) => setNewTerm({ ...newTerm, replacement_suggestion: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Brand Rationale</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Brand Rationale</label>
                   <textarea
                     rows={2}
                     placeholder="Why this vocabulary matters..."
                     value={newTerm.explanation}
                     onChange={(e) => setNewTerm({ ...newTerm, explanation: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-3 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                  className="w-full py-2.5 px-3 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_4px_14px_rgba(91,75,255,0.3)]"
                 >
                   Save Terminology Rule
                 </button>
               </form>
             </div>
           ) : (
-            <div className="glass-panel p-5 rounded-[12px] border border-white/10 text-xs text-[#777777] font-mono">
+            <div className="glass-panel p-5 rounded-[14px] border border-[#E5E1F2] text-xs text-[#77738F] font-mono bg-white/70">
               Administrator credentials required to enforce brand vocabulary.
             </div>
           )}
@@ -935,55 +935,55 @@ export default function BrandDNAWorkspacePage() {
       {activeTab === "visuals" && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-[#A1A1A1]">Approved Visual Design Tokens</h3>
-            <p className="text-xs text-[#A1A1A1]">
-              The AI Visual Forensics engine audits uploaded creatives and images against these certified monochromatic hexadecimal values and minimum clear-space thresholds.
+            <h3 className="text-xs font-mono uppercase tracking-wider text-[#77738F] font-semibold">Approved Visual Design Tokens</h3>
+            <p className="text-xs text-[#77738F]">
+              The AI Visual Forensics engine audits uploaded creatives and images against these certified brand color hexadecimal values and typography standards.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div className="glass-card p-4 rounded-[10px] space-y-3">
-              <div className="w-full h-14 rounded-[6px] bg-[#000000] border border-white/15" />
+            <div className="glass-card p-4 rounded-[12px] space-y-3 border border-[#E5E1F2] bg-white/80 shadow-sm">
+              <div className="w-full h-14 rounded-[8px] bg-[#0D0B2D] border border-[#E5E1F2]" />
               <div>
-                <p className="text-xs font-bold text-white">Pure Black</p>
-                <p className="text-[11px] text-[#A1A1A1] font-mono">HEX: #000000</p>
-                <p className="text-[10px] text-[#777777] mt-0.5">Primary Canvas Base</p>
+                <p className="text-xs font-bold text-[#0D0B2D]">Primary Midnight</p>
+                <p className="text-[11px] text-[#5B4BFF] font-mono font-semibold">HEX: #0D0B2D</p>
+                <p className="text-[10px] text-[#77738F] mt-0.5">Brand Identity Base</p>
               </div>
             </div>
 
-            <div className="glass-card p-4 rounded-[10px] space-y-3">
-              <div className="w-full h-14 rounded-[6px] bg-[#111111] border border-white/15" />
+            <div className="glass-card p-4 rounded-[12px] space-y-3 border border-[#E5E1F2] bg-white/80 shadow-sm">
+              <div className="w-full h-14 rounded-[8px] bg-[#5B4BFF] border border-[#5B4BFF]" />
               <div>
-                <p className="text-xs font-bold text-white">Dark Surface</p>
-                <p className="text-[11px] text-[#A1A1A1] font-mono">HEX: #111111</p>
-                <p className="text-[10px] text-[#777777] mt-0.5">Panels & Workspaces</p>
+                <p className="text-xs font-bold text-[#0D0B2D]">Electric Purple</p>
+                <p className="text-[11px] text-[#5B4BFF] font-mono font-semibold">HEX: #5B4BFF</p>
+                <p className="text-[10px] text-[#77738F] mt-0.5">Primary Accent & Actions</p>
               </div>
             </div>
 
-            <div className="glass-card p-4 rounded-[10px] space-y-3">
-              <div className="w-full h-14 rounded-[6px] bg-[#181818] border border-white/15" />
+            <div className="glass-card p-4 rounded-[12px] space-y-3 border border-[#E5E1F2] bg-white/80 shadow-sm">
+              <div className="w-full h-14 rounded-[8px] bg-[#A78BFA] border border-[#A78BFA]" />
               <div>
-                <p className="text-xs font-bold text-white">Elevated Surface</p>
-                <p className="text-[11px] text-[#A1A1A1] font-mono">HEX: #181818</p>
-                <p className="text-[10px] text-[#777777] mt-0.5">Floating Cards & Tables</p>
+                <p className="text-xs font-bold text-[#0D0B2D]">Soft Violet</p>
+                <p className="text-[11px] text-[#5B4BFF] font-mono font-semibold">HEX: #A78BFA</p>
+                <p className="text-[10px] text-[#77738F] mt-0.5">Secondary Highlights</p>
               </div>
             </div>
 
-            <div className="glass-card p-4 rounded-[10px] space-y-3">
-              <div className="w-full h-14 rounded-[6px] bg-[#D4D4D4] border border-white/15" />
+            <div className="glass-card p-4 rounded-[12px] space-y-3 border border-[#E5E1F2] bg-white/80 shadow-sm">
+              <div className="w-full h-14 rounded-[8px] bg-[#E6E0FF] border border-[#E5E1F2]" />
               <div>
-                <p className="text-xs font-bold text-black">Light Gray</p>
-                <p className="text-[11px] text-[#A1A1A1] font-mono">HEX: #D4D4D4</p>
-                <p className="text-[10px] text-[#777777] mt-0.5">Secondary Signals & Highlights</p>
+                <p className="text-xs font-bold text-[#0D0B2D]">Lavender Surface</p>
+                <p className="text-[11px] text-[#5B4BFF] font-mono font-semibold">HEX: #E6E0FF</p>
+                <p className="text-[10px] text-[#77738F] mt-0.5">Subtle Card & Badge Fill</p>
               </div>
             </div>
 
-            <div className="glass-card p-4 rounded-[10px] space-y-3">
-              <div className="w-full h-14 rounded-[6px] bg-[#FFFFFF] border border-white/15" />
+            <div className="glass-card p-4 rounded-[12px] space-y-3 border border-[#E5E1F2] bg-white/80 shadow-sm">
+              <div className="w-full h-14 rounded-[8px] bg-[#F7F8FF] border border-[#E5E1F2]" />
               <div>
-                <p className="text-xs font-bold text-black">Pure White</p>
-                <p className="text-[11px] text-[#A1A1A1] font-mono">HEX: #FFFFFF</p>
-                <p className="text-[10px] text-[#777777] mt-0.5">Primary Actions & Headings</p>
+                <p className="text-xs font-bold text-[#0D0B2D]">Cloud Background</p>
+                <p className="text-[11px] text-[#5B4BFF] font-mono font-semibold">HEX: #F7F8FF</p>
+                <p className="text-[10px] text-[#77738F] mt-0.5">Main Canvas Base</p>
               </div>
             </div>
           </div>
@@ -991,21 +991,21 @@ export default function BrandDNAWorkspacePage() {
           {/* Custom Brand Assets */}
           {dna.assets.length > 0 && (
             <div className="space-y-3 pt-4">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-[#A1A1A1]">Registered Custom Assets</h4>
+              <h4 className="text-xs font-mono uppercase tracking-wider text-[#77738F] font-semibold">Registered Custom Assets</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {dna.assets.map((asset) => (
-                  <div key={asset.id} className="glass-card p-4 rounded-[8px] flex items-center justify-between">
+                  <div key={asset.id} className="glass-card p-4 rounded-[10px] flex items-center justify-between border border-[#E5E1F2] bg-white/80 shadow-sm">
                     <div>
-                      <p className="text-xs font-bold text-white">{asset.name}</p>
-                      <p className="text-[10px] font-mono text-[#D4D4D4] uppercase">{asset.asset_type.replace('_', ' ')}</p>
+                      <p className="text-xs font-bold text-[#0D0B2D]">{asset.name}</p>
+                      <p className="text-[10px] font-mono text-[#5B4BFF] uppercase">{asset.asset_type.replace('_', ' ')}</p>
                       {asset.metadata_json && (
-                        <p className="text-[11px] text-[#A1A1A1] font-mono mt-1 truncate max-w-[200px]">{asset.metadata_json}</p>
+                        <p className="text-[11px] text-[#77738F] font-mono mt-1 truncate max-w-[200px]">{asset.metadata_json}</p>
                       )}
                     </div>
                     {isAdmin && (
                       <button
                         onClick={() => handleDeleteAsset(asset.id)}
-                        className="text-[#777777] hover:text-white p-1 transition-colors"
+                        className="text-[#77738F] hover:text-red-600 p-1 transition-colors"
                         title="Delete Asset"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -1019,49 +1019,49 @@ export default function BrandDNAWorkspacePage() {
 
           {/* Add Asset Form */}
           {isAdmin && (
-            <div className="glass-panel p-5 rounded-[12px] border border-white/12 space-y-4 max-w-xl shadow-xl">
-              <h3 className="text-xs font-mono uppercase tracking-wider text-white">Register Custom Brand Token</h3>
+            <div className="glass-panel p-5 rounded-[14px] border border-[#E5E1F2] space-y-4 max-w-xl shadow-md bg-white/80">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-[#0D0B2D] font-bold">Register Custom Brand Token</h3>
               <form onSubmit={handleAddAsset} className="space-y-3 text-xs">
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Asset Name</label>
+                    <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Asset Name</label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Official Monochrome Wordmark"
+                      placeholder="e.g. Official Primary Wordmark"
                       value={newAsset.name}
                       onChange={(e) => setNewAsset({ ...newAsset, name: e.target.value })}
-                      className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                      className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                     />
                   </div>
                   <div>
-                    <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Asset Category</label>
+                    <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Asset Category</label>
                     <select
                       value={newAsset.asset_type}
                       onChange={(e) => setNewAsset({ ...newAsset, asset_type: e.target.value as any })}
-                      className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                      className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                     >
-                      <option value="color_palette" className="bg-black text-white">Color Palette</option>
-                      <option value="logo" className="bg-black text-white">Official Logo</option>
-                      <option value="typography" className="bg-black text-white">Typography Spec</option>
-                      <option value="imagery" className="bg-black text-white">Imagery Standard</option>
+                      <option value="color_palette">Color Palette</option>
+                      <option value="logo">Official Logo</option>
+                      <option value="typography">Typography Spec</option>
+                      <option value="imagery">Imagery Standard</option>
                     </select>
                   </div>
                 </div>
                 <div>
-                  <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Specification / Hex Code / Clear Space</label>
+                  <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Specification / Hex Code / Clear Space</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. #FFFFFF or min-clear-space: 24px"
+                    placeholder="e.g. #5B4BFF or min-clear-space: 24px"
                     value={newAsset.metadata_json}
                     onChange={(e) => setNewAsset({ ...newAsset, metadata_json: e.target.value })}
-                    className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                    className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="py-2.5 px-4 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                  className="py-2.5 px-4 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_4px_14px_rgba(91,75,255,0.3)]"
                 >
                   Save Visual Token
                 </button>
@@ -1073,19 +1073,19 @@ export default function BrandDNAWorkspacePage() {
 
       {/* Tab 5: Document Upload */}
       {activeTab === "upload" && (
-        <div className="glass-panel p-8 rounded-[14px] border border-white/15 space-y-6 text-center max-w-2xl mx-auto shadow-2xl">
-          <div className="w-14 h-14 rounded-[8px] bg-white/5 border border-white/20 text-white flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-            <Upload className="w-6 h-6 text-white" />
+        <div className="glass-panel p-8 rounded-[16px] border border-[#E5E1F2] space-y-6 text-center max-w-2xl mx-auto shadow-xl bg-white/80">
+          <div className="w-14 h-14 rounded-[12px] bg-[#E6E0FF] border border-[#5B4BFF]/30 text-[#5B4BFF] flex items-center justify-center mx-auto shadow-sm">
+            <Upload className="w-6 h-6 text-[#5B4BFF]" />
           </div>
           <div>
-            <h3 className="text-lg font-extrabold text-white">Upload Brand Guidelines Document</h3>
-            <p className="text-xs text-[#A1A1A1] mt-1">
+            <h3 className="text-lg font-extrabold text-[#0D0B2D]">Upload Brand Guidelines Document</h3>
+            <p className="text-xs text-[#77738F] mt-1">
               Supports .pdf, .txt, and .md files. Extracted text is automatically indexed into the Brand DNA RAG pipeline for autonomous retrieval during content verification.
             </p>
           </div>
 
           {isAdmin ? (
-            <label className="inline-block cursor-pointer px-6 py-3 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold font-mono text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all">
+            <label className="inline-block cursor-pointer px-6 py-3 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold font-mono text-xs uppercase tracking-wider shadow-[0_4px_14px_rgba(91,75,255,0.3)] transition-all">
               <span>{isUploading ? "Extracting Text..." : "Choose Brand File to Ingest"}</span>
               <input
                 type="file"
@@ -1096,15 +1096,15 @@ export default function BrandDNAWorkspacePage() {
               />
             </label>
           ) : (
-            <p className="text-xs text-[#777777] font-mono">
+            <p className="text-xs text-[#77738F] font-mono">
               Administrator credentials required to upload guideline documents.
             </p>
           )}
 
           {uploadText && (
-            <div className="text-left mt-6 p-4 rounded-[8px] glass-inner border border-white/10 space-y-2">
-              <p className="text-xs font-mono uppercase text-white font-bold">Extracted & Ingested into Brand DNA:</p>
-              <p className="text-xs text-[#D4D4D4] font-mono max-h-48 overflow-y-auto whitespace-pre-wrap leading-relaxed">
+            <div className="text-left mt-6 p-4 rounded-[10px] glass-inner border border-[#E5E1F2] bg-[#F7F8FF] space-y-2">
+              <p className="text-xs font-mono uppercase text-[#0D0B2D] font-bold">Extracted & Ingested into Brand DNA:</p>
+              <p className="text-xs text-[#17143A] font-mono max-h-48 overflow-y-auto whitespace-pre-wrap leading-relaxed">
                 {uploadText}
               </p>
             </div>
@@ -1114,87 +1114,87 @@ export default function BrandDNAWorkspacePage() {
 
       {/* Modal: Create New Brand */}
       {showCreateBrandModal && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-lg rounded-[14px] glass-modal p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+        <div className="fixed inset-0 z-50 bg-[#0D0B2D]/40 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-lg rounded-[16px] glass-modal bg-white p-6 space-y-4 border border-[#E5E1F2] shadow-2xl">
+            <div className="flex items-center justify-between border-b border-[#E5E1F2] pb-3">
               <div className="flex items-center space-x-2">
-                <Building2 className="w-5 h-5 text-white" />
-                <h3 className="text-base font-bold text-white">Establish New Brand Identity</h3>
+                <Building2 className="w-5 h-5 text-[#5B4BFF]" />
+                <h3 className="text-base font-bold text-[#0D0B2D]">Establish New Brand Identity</h3>
               </div>
-              <button onClick={() => setShowCreateBrandModal(false)} className="text-[#A1A1A1] hover:text-white">
+              <button onClick={() => setShowCreateBrandModal(false)} className="text-[#77738F] hover:text-[#0D0B2D]">
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             <form onSubmit={handleCreateBrand} className="space-y-3 text-xs">
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Brand Name</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Brand Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Apex Liquidity"
                   value={newBrandForm.name}
                   onChange={(e) => setNewBrandForm({ ...newBrandForm, name: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Industry</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Industry</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Institutional Finance / Web3"
                   value={newBrandForm.industry}
                   onChange={(e) => setNewBrandForm({ ...newBrandForm, industry: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Mission Statement</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Mission Statement</label>
                 <textarea
                   rows={2}
                   placeholder="What is this brand's sovereign purpose?"
                   value={newBrandForm.mission}
                   onChange={(e) => setNewBrandForm({ ...newBrandForm, mission: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Personality Traits (comma-separated)</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Personality Traits (comma-separated)</label>
                 <input
                   type="text"
                   placeholder="e.g. authoritative, precise, institutional"
                   value={newBrandForm.personality}
                   onChange={(e) => setNewBrandForm({ ...newBrandForm, personality: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Official Website</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Official Website</label>
                 <input
                   type="url"
                   placeholder="https://brand.domain"
                   value={newBrandForm.website}
                   onChange={(e) => setNewBrandForm({ ...newBrandForm, website: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
-              <div className="flex items-center justify-end space-x-3 pt-3 border-t border-white/10">
+              <div className="flex items-center justify-end space-x-3 pt-3 border-t border-[#E5E1F2]">
                 <button
                   type="button"
                   onClick={() => setShowCreateBrandModal(false)}
-                  className="glass-button px-4 py-2 rounded-[6px] text-xs font-mono"
+                  className="glass-button px-4 py-2 rounded-[8px] text-xs font-mono border border-[#E5E1F2] text-[#77738F] hover:text-[#0D0B2D]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                  className="px-4 py-2 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_4px_14px_rgba(91,75,255,0.3)]"
                 >
                   Create Brand
                 </button>
@@ -1206,92 +1206,92 @@ export default function BrandDNAWorkspacePage() {
 
       {/* Modal: Edit Brand Profile */}
       {showEditBrandModal && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-lg rounded-[14px] glass-modal p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+        <div className="fixed inset-0 z-50 bg-[#0D0B2D]/40 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-lg rounded-[16px] glass-modal bg-white p-6 space-y-4 border border-[#E5E1F2] shadow-2xl">
+            <div className="flex items-center justify-between border-b border-[#E5E1F2] pb-3">
               <div className="flex items-center space-x-2">
-                <Edit3 className="w-5 h-5 text-white" />
-                <h3 className="text-base font-bold text-white">Update Brand Profile</h3>
+                <Edit3 className="w-5 h-5 text-[#5B4BFF]" />
+                <h3 className="text-base font-bold text-[#0D0B2D]">Update Brand Profile</h3>
               </div>
-              <button onClick={() => setShowEditBrandModal(false)} className="text-[#A1A1A1] hover:text-white">
+              <button onClick={() => setShowEditBrandModal(false)} className="text-[#77738F] hover:text-[#0D0B2D]">
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             <form onSubmit={handleUpdateBrand} className="space-y-3 text-xs">
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Brand Name</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Brand Name</label>
                 <input
                   type="text"
                   required
                   value={editBrandForm.name}
                   onChange={(e) => setEditBrandForm({ ...editBrandForm, name: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Industry</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Industry</label>
                 <input
                   type="text"
                   required
                   value={editBrandForm.industry}
                   onChange={(e) => setEditBrandForm({ ...editBrandForm, industry: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Mission Statement</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Mission Statement</label>
                 <textarea
                   rows={2}
                   value={editBrandForm.mission}
                   onChange={(e) => setEditBrandForm({ ...editBrandForm, mission: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Core Values</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Core Values</label>
                 <textarea
                   rows={2}
                   value={editBrandForm.values}
                   onChange={(e) => setEditBrandForm({ ...editBrandForm, values: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Personality Traits</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Personality Traits</label>
                 <input
                   type="text"
                   value={editBrandForm.personality}
                   onChange={(e) => setEditBrandForm({ ...editBrandForm, personality: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="text-[#A1A1A1] block mb-1 font-mono uppercase text-[10px]">Website</label>
+                <label className="text-[#77738F] block mb-1 font-mono uppercase text-[10px] font-semibold">Website</label>
                 <input
                   type="url"
                   value={editBrandForm.website}
                   onChange={(e) => setEditBrandForm({ ...editBrandForm, website: e.target.value })}
-                  className="glass-input w-full rounded-[6px] px-3 py-2 font-mono"
+                  className="glass-input w-full rounded-[8px] px-3 py-2 font-mono bg-white border-[#E5E1F2] text-[#17143A] focus:border-[#5B4BFF] focus:outline-none"
                 />
               </div>
 
-              <div className="flex items-center justify-end space-x-3 pt-3 border-t border-white/10">
+              <div className="flex items-center justify-end space-x-3 pt-3 border-t border-[#E5E1F2]">
                 <button
                   type="button"
                   onClick={() => setShowEditBrandModal(false)}
-                  className="glass-button px-4 py-2 rounded-[6px] text-xs font-mono"
+                  className="glass-button px-4 py-2 rounded-[8px] text-xs font-mono border border-[#E5E1F2] text-[#77738F] hover:text-[#0D0B2D]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                  className="px-4 py-2 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold font-mono text-xs uppercase tracking-wider transition-all shadow-[0_4px_14px_rgba(91,75,255,0.3)]"
                 >
                   Save Changes
                 </button>

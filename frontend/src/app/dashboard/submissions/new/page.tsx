@@ -121,43 +121,43 @@ export default function NewSubmissionPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 font-sans text-[#F5F5F5]">
+    <div className="max-w-4xl mx-auto space-y-6 font-sans text-[#17143A]">
       {/* Header */}
       <div className="space-y-1">
-        <div className="glass-pill inline-flex items-center space-x-2 text-[10px] font-mono uppercase tracking-[0.16em] text-[#D4D4D4] px-2.5 py-1 rounded-[4px]">
-          <Activity className="w-3.5 h-3.5 text-white animate-pulse" />
+        <div className="glass-pill inline-flex items-center space-x-2 text-[10px] font-mono uppercase tracking-[0.16em] text-[#5B4BFF] px-2.5 py-1 rounded-[6px] bg-[#E6E0FF] border border-[#5B4BFF]/25">
+          <Activity className="w-3.5 h-3.5 text-[#5B4BFF] animate-pulse" />
           <span>CONTENT VERIFICATION STUDIO</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0D0B2D] tracking-tight">
           Submit Content for Brand Analysis
         </h1>
-        <p className="text-xs text-[#A1A1A1] font-normal">
+        <p className="text-xs text-[#77738F] font-normal">
           Your content will be cross-referenced across 6 governance dimensions against the brand&apos;s approved DNA knowledge base.
         </p>
       </div>
 
       {error && (
-        <div className="glass-card p-3.5 rounded-[8px] border-2 border-[#D4D4D4] text-xs text-white flex items-center space-x-2 font-mono">
-          <AlertCircle className="w-4 h-4 flex-shrink-0 text-white" />
+        <div className="glass-card p-3.5 rounded-[10px] border-2 border-red-300 bg-red-50/80 text-xs text-red-700 flex items-center space-x-2 font-mono">
+          <AlertCircle className="w-4 h-4 flex-shrink-0 text-red-600" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Preset Fill Buttons for Quick Testing */}
-      <div className="glass-panel p-4 rounded-[10px] border border-white/12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs shadow-lg">
-        <span className="text-[#A1A1A1] font-mono text-[11px] uppercase tracking-wider font-semibold">Demo Presets:</span>
+      <div className="glass-panel p-4 rounded-[12px] border border-[#E5E1F2] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs shadow-sm bg-white/70">
+        <span className="text-[#77738F] font-mono text-[11px] uppercase tracking-wider font-semibold">Demo Presets:</span>
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => handleSampleFill("compliant")}
-            className="glass-button px-3 py-1.5 rounded-[6px] font-mono text-xs text-white"
+            className="glass-button px-3 py-1.5 rounded-[8px] font-mono text-xs text-[#0D0B2D] hover:text-[#5B4BFF] border-[#E5E1F2] hover:bg-[#F0EDFF] transition-colors"
           >
             Load Compliant Copy (~96 Score)
           </button>
           <button
             type="button"
             onClick={() => handleSampleFill("violations")}
-            className="glass-button px-3 py-1.5 rounded-[6px] font-mono text-xs text-[#D4D4D4]"
+            className="glass-button px-3 py-1.5 rounded-[8px] font-mono text-xs text-[#77738F] hover:text-[#5B4BFF] border-[#E5E1F2] hover:bg-[#F0EDFF] transition-colors"
           >
             Load Violation Copy (~58 Score)
           </button>
@@ -165,19 +165,19 @@ export default function NewSubmissionPage() {
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="glass-card-elevated p-6 md:p-8 rounded-[14px] border border-white/15 space-y-6 shadow-2xl backdrop-blur-2xl">
+      <form onSubmit={handleSubmit} className="glass-card-elevated p-6 md:p-8 rounded-[16px] border border-[#E5E1F2] space-y-6 shadow-xl backdrop-blur-2xl bg-white/80">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-mono uppercase tracking-wider text-[#A1A1A1] mb-1">
+            <label className="block text-xs font-mono uppercase tracking-wider text-[#77738F] mb-1 font-semibold">
               Select Brand DNA
             </label>
             <select
               value={selectedBrandId}
               onChange={(e) => setSelectedBrandId(e.target.value)}
-              className="glass-input w-full rounded-[6px] px-3.5 py-2.5 text-xs text-white"
+              className="glass-input w-full rounded-[8px] px-3.5 py-2.5 text-xs text-[#17143A] bg-white border border-[#E5E1F2] focus:border-[#5B4BFF] focus:outline-none"
             >
               {brands.map((b) => (
-                <option key={b.id} value={b.id} className="bg-black text-white">
+                <option key={b.id} value={b.id} className="bg-white text-[#17143A]">
                   {b.name} ({b.industry})
                 </option>
               ))}
@@ -185,25 +185,25 @@ export default function NewSubmissionPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-mono uppercase tracking-wider text-[#A1A1A1] mb-1">
+            <label className="block text-xs font-mono uppercase tracking-wider text-[#77738F] mb-1 font-semibold">
               Content Format
             </label>
             <select
               value={contentType}
               onChange={(e) => setContentType(e.target.value)}
-              className="glass-input w-full rounded-[6px] px-3.5 py-2.5 text-xs text-white"
+              className="glass-input w-full rounded-[8px] px-3.5 py-2.5 text-xs text-[#17143A] bg-white border border-[#E5E1F2] focus:border-[#5B4BFF] focus:outline-none"
             >
-              <option value="marketing_copy" className="bg-black text-white">Marketing / Web Copy</option>
-              <option value="social_post" className="bg-black text-white">Social Media Post</option>
-              <option value="product_description" className="bg-black text-white">Product Description</option>
-              <option value="document" className="bg-black text-white">Full Document / Whitepaper</option>
-              <option value="image" className="bg-black text-white">Visual Asset / Creative</option>
+              <option value="marketing_copy" className="bg-white text-[#17143A]">Marketing / Web Copy</option>
+              <option value="social_post" className="bg-white text-[#17143A]">Social Media Post</option>
+              <option value="product_description" className="bg-white text-[#17143A]">Product Description</option>
+              <option value="document" className="bg-white text-[#17143A]">Full Document / Whitepaper</option>
+              <option value="image" className="bg-white text-[#17143A]">Visual Asset / Creative</option>
             </select>
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-mono uppercase tracking-wider text-[#A1A1A1] mb-1">
+          <label className="block text-xs font-mono uppercase tracking-wider text-[#77738F] mb-1 font-semibold">
             Submission Title
           </label>
           <input
@@ -212,16 +212,16 @@ export default function NewSubmissionPage() {
             placeholder="e.g. Q1 Global Expansion Announcement"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="glass-input w-full rounded-[6px] px-3.5 py-2.5 text-xs text-white placeholder-[#777777]"
+            className="glass-input w-full rounded-[8px] px-3.5 py-2.5 text-xs text-[#17143A] placeholder-[#77738F]/60 bg-white border border-[#E5E1F2] focus:border-[#5B4BFF] focus:outline-none"
           />
         </div>
 
         <div>
           <div className="flex items-center justify-between mb-1">
-            <label className="block text-xs font-mono uppercase tracking-wider text-[#A1A1A1]">
+            <label className="block text-xs font-mono uppercase tracking-wider text-[#77738F] font-semibold">
               Content Copy to Evaluate
             </label>
-            <span className="text-[11px] font-mono text-[#777777]">
+            <span className="text-[11px] font-mono text-[#77738F]">
               {rawText.length} characters
             </span>
           </div>
@@ -230,15 +230,15 @@ export default function NewSubmissionPage() {
             placeholder="Paste your marketing copy, social caption, or document draft here..."
             value={rawText}
             onChange={(e) => setRawText(e.target.value)}
-            className="glass-input w-full rounded-[6px] p-3.5 text-xs text-white placeholder-[#777777] font-mono leading-relaxed"
+            className="glass-input w-full rounded-[8px] p-3.5 text-xs text-[#17143A] placeholder-[#77738F]/60 font-mono leading-relaxed bg-white border border-[#E5E1F2] focus:border-[#5B4BFF] focus:outline-none"
           />
         </div>
 
         {/* File Drag & Drop / Upload Optional */}
-        <div className="glass-inner p-5 rounded-[10px] border border-dashed border-white/20 text-center space-y-2">
-          <Upload className="w-6 h-6 text-white mx-auto" />
-          <div className="text-xs text-[#A1A1A1]">
-            <label className="text-white hover:underline cursor-pointer font-semibold">
+        <div className="glass-inner p-5 rounded-[12px] border border-dashed border-[#5B4BFF]/30 text-center space-y-2 bg-[#F7F8FF]/80">
+          <Upload className="w-6 h-6 text-[#5B4BFF] mx-auto" />
+          <div className="text-xs text-[#77738F]">
+            <label className="text-[#5B4BFF] hover:underline cursor-pointer font-semibold">
               Upload companion asset or document
               <input
                 type="file"
@@ -247,10 +247,10 @@ export default function NewSubmissionPage() {
                 onChange={handleFileChange}
               />
             </label>
-            <span className="text-[#777777]"> (PDF, TXT, PNG, JPG up to 25MB)</span>
+            <span className="text-[#77738F]"> (PDF, TXT, PNG, JPG up to 25MB)</span>
           </div>
           {file && (
-            <p className="text-xs text-white font-mono font-bold pt-1">
+            <p className="text-xs text-[#5B4BFF] font-mono font-bold pt-1">
               Attached: {file.name} ({uploadedFileMeta?.content_type || "file"})
             </p>
           )}
@@ -258,17 +258,17 @@ export default function NewSubmissionPage() {
 
         {/* Submission Button / Progress */}
         {isSubmitting ? (
-          <div className="glass-inner p-5 rounded-[8px] border border-white/20 text-center space-y-2">
-            <div className="inline-block animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
-            <p className="text-xs font-mono text-white font-semibold">{analysisStep}</p>
+          <div className="glass-inner p-5 rounded-[10px] border border-[#5B4BFF]/30 text-center space-y-2 bg-[#F0EDFF]">
+            <div className="inline-block animate-spin w-5 h-5 border-2 border-[#5B4BFF] border-t-transparent rounded-full" />
+            <p className="text-xs font-mono text-[#5B4BFF] font-semibold">{analysisStep}</p>
           </div>
         ) : (
           <button
             type="submit"
-            className="w-full py-3.5 px-6 rounded-[6px] bg-white text-black hover:bg-[#D4D4D4] font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_24px_rgba(255,255,255,0.25)] hover:shadow-[0_0_32px_rgba(255,255,255,0.38)] flex items-center justify-center space-x-2 font-mono"
+            className="w-full py-3.5 px-6 rounded-[8px] bg-[#5B4BFF] text-white hover:bg-[#4d3df5] font-bold text-xs uppercase tracking-wider transition-all shadow-[0_4px_16px_rgba(91,75,255,0.35)] hover:shadow-[0_6px_20px_rgba(91,75,255,0.45)] flex items-center justify-center space-x-2 font-mono"
           >
             <span>Run Brand Integrity Analysis</span>
-            <ArrowRight className="w-4 h-4 text-black" />
+            <ArrowRight className="w-4 h-4 text-white" />
           </button>
         )}
       </form>
